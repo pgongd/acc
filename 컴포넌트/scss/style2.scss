@@ -1,0 +1,80 @@
+@use "sass:color";
+
+
+// 데이터피커
+$date-bg-light: #fff;
+$date-bg-dark: #1a1a1a;
+$date-text-light: #222;
+$date-text-dark: #ddd;
+$date-highlight: #0072ce;
+
+.datepicker {
+  width: 100%;
+  max-width: 320px;
+  background: $date-bg-light;
+  color: $date-text-light;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: sans-serif;
+
+  &[data-theme="dark"] {
+    background: $date-bg-dark;
+    color: $date-text-dark;
+  }
+
+  .datepicker-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    font-size: 16px;
+    background: color.lighten($date-bg-light, 5%);
+    button {
+      background: none;
+      border: none;
+      color: $date-highlight;
+      font-size: 14px;
+      cursor: pointer;
+    }
+   
+  }
+
+  .datepicker-body {
+    display: flex;
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .wheel {
+    flex: 1;
+    text-align: center;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    div {
+      height: 40px;
+      line-height: 40px;
+      scroll-snap-align: center;
+      font-size: 16px;
+    }
+  }
+
+  .highlight {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 40px;
+    margin-top: -20px;
+    border-top: 1px solid $date-highlight;
+    border-bottom: 1px solid $date-highlight;
+    pointer-events: none;
+  }
+}
+  

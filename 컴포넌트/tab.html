@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tabs {
+  display: flex;
+  border-bottom: 2px solid #ddd;
+
+  [role="tab"] {
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    &[aria-selected="true"] {
+      color: var(--color-primary, #0072ce);
+      font-weight: 600;
+      border-bottom: 2px solid var(--color-primary, #0072ce);
+    }
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="tabs" role="tablist" aria-label="상품 메뉴">
+  <button role="tab" aria-selected="true" aria-controls="panel1" id="tab1">
+    예금
+  </button>
+  <button role="tab" aria-selected="false" aria-controls="panel2" id="tab2">
+    대출
+  </button>
+</div>
+
+<div id="panel1" role="tabpanel" aria-labelledby="tab1">예금 내용</div>
+<div id="panel2" role="tabpanel" aria-labelledby="tab2" hidden>대출 내용</div>
+
+<script>
+  document.querySelectorAll('[role="tab"]').forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const tabs = tab.parentNode.querySelectorAll('[role="tab"]');
+    const panels = document.querySelectorAll('[role="tabpanel"]');
+
+    tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+    panels.forEach((p) => (p.hidden = true));
+
+    tab.setAttribute("aria-selected", "true");
+    document.getElementById(tab.getAttribute("aria-controls")).hidden = false;
+  });
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+/* 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* body 스크롤 방지 클래스 */
+        .body--no-scroll {
+            overflow: hidden;
+        }
+        
+        /* 다이얼로그(모달) 스타일 - BEM 방식 */
+        .dialog {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .dialog--is-open {
+            display: block;
+        }
+        .dialog__content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 10vh auto;
+            position: relative;
+        }
+        .dialog__close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: 0;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* 시각적 숨김 (스크린 리더 전용) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }

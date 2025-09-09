@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=c, initial-scale=1.0">
+  <title>체크박스</title>
+  <style>
+    .checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+
+  input {
+    position: absolute;
+    opacity: 0;
+
+    + .custom {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--color-border, #aaa);
+      border-radius: 4px;
+      margin-right: 6px;
+      background: var(--color-bg, #fff);
+      transition: 0.2s;
+    }
+
+    &:checked + .custom {
+      background: var(--color-primary, #0072ce);
+      border-color: var(--color-primary, #0072ce);
+
+      &::after {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 10px;
+        margin: 3px;
+        background: #fff;
+        border-radius: 2px;
+      }
+    }
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="checkbox-group" role="group" aria-labelledby="chkLabel">
+  <span id="chkLabel" class="sr-only">약관 동의</span>
+
+  <label class="checkbox">
+    <input type="checkbox" />
+    <span class="custom"></span>
+    이용약관 동의
+  </label>
+
+  <label class="checkbox">
+    <input type="checkbox" />
+    <span class="custom"></span>
+    개인정보 처리방침 동의
+  </label>
+</div>
+
+</body>
+</html>

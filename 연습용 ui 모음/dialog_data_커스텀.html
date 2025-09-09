@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 접근성 BEM data-속성 다중/이중 다이얼로그</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Inter', sans-serif; /* 폰트 적용 */
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #343a40;
+            line-height: 1.6;
+        }
+
+        /* body 스크롤 방지 클래스 */
+        .body--no-scroll {
+            overflow: hidden;
+        }
+        
+        /* 버튼 컨테이너 스타일 */
+        .button-container {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Button 컴포넌트 BEM 스타일 */
+        .button {
+            padding: 12px 24px;
+            border-radius: 8px; /* 둥근 모서리 */
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border: 1px solid transparent;
+            margin: 0 10px 10px 0; /* 버튼 간격 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+            text-decoration: none; /* 링크 버튼 대비 */
+            display: inline-flex; /* 텍스트 정렬 및 패딩 */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Primary Button */
+        .button--primary {
+            background-color: #007bff; /* 파란색 */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+        }
+        .button--primary:hover:not(:disabled) {
+            background-color: #0056b3;
+            box-shadow: 0 6px 8px rgba(0, 123, 255, 0.3);
+        }
+        .button--primary:focus-visible:not(:disabled) { /* focus-visible 사용 */
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4);
+            outline: none;
+        }
+
+        /* Secondary Button */
+        .button--secondary {
+            background-color: white;
+            color: #007bff;
+            border-color: #007bff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .button--secondary:hover:not(:disabled) {
+            background-color: #e9ecef;
+            color: #0056b3;
+            border-color: #0056b3;
+        }
+        .button--secondary:focus-visible:not(:disabled) { /* focus-visible 사용 */
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4);
+            outline: none;
+        }
+
+        /* Active State */
+        .button--active {
+            transform: translateY(1px);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        }
+
+        /* Disabled State */
+        .button--disabled,
+        .button:disabled { /* 실제 disabled 속성도 함께 처리 */
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #ccc !important; /* disabled 시 색상 고정 */
+            color: #666 !important;
+            border-color: #bbb !important;
+            box-shadow: none !important;
+        }
+        .button--primary.button--disabled {
+            background-color: #a0cffc !important;
+            color: #fff !important;
+        }
+        .button--secondary.button--disabled {
+            background-color: #f8f9fa !important;
+            color: #a0cffc !important;
+            border-color: #a0cffc !important;
+        }
+
+
+        /* Dialog (Modal) 컴포넌트 BEM 스타일 */
+        .dialog {
+            display: none; /* 초기 상태는 숨김 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000; /* 기본 모달 z-index */
+            animation: fadeIn 0.3s ease-out; /* 등장 애니메이션 */
+        }
+        .dialog--is-open {
+            display: flex; /* flexbox를 사용하여 중앙 정렬 */
+            justify-content: center;
+            align-items: center;
+        }
+        /* 중첩 모달일 경우 z-index를 높여 상단에 보이도록 */
+        .dialog.dialog--nested {
+            z-index: 1001; /* 중첩 모달은 더 높은 z-index */
+        }
+        .dialog__content {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 90%; /* 모바일 대응 */
+            width: 500px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: slideIn 0.3s ease-out; /* 내용 등장 애니메이션 */
+        }
+        @media (min-width: 768px) { /* 태블릿 이상에서 최대 너비 조절 */
+            .dialog__content {
+                max-width: 600px;
+            }
+        }
+        .dialog__title {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .dialog__body-text {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .dialog__close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: 0;
+            cursor: pointer;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #666;
+            transition: color 0.2s ease-in-out;
+        }
+        .dialog__close-btn:hover {
+            color: #000;
+        }
+        .dialog__actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        /* 애니메이션 키프레임 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* 시각적 숨김 (스크린 리더 전용) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BEM 기반 웹 접근성 다중/이중 다이얼로그 예제</h1>
+
+    <div class="button-container">
+        <h2>다이얼로그 컨트롤 버튼</h2>
+        <!-- data-dialog-open 속성을 사용하여 열릴 다이얼로그의 ID 지정 -->
+        <button class="button button--primary" data-dialog-open="termsDialog">약관 보기 (메인 다이얼로그)</button>
+        <button class="button button--secondary" data-dialog-open="infoDialog">정보 알림 (독립 다이얼로그)</button>
+        <button class="button button--secondary" data-dialog-open="anotherDialog">추가 다이얼로그 (생성 예정)</button>
+    </div>
+
+    <!-- 다이얼로그(모달) 마크업 1: 약관 동의 다이얼로그 -->
+    <!-- data-dialog 속성으로 다이얼로그임을 명시 -->
+    <div id="termsDialog" class="dialog" data-dialog role="dialog" aria-modal="true" aria-labelledby="termsDialogTitle">
+        <div class="dialog__content">
+            <h2 id="termsDialogTitle" class="dialog__title">개인정보 수집 및 이용 동의</h2>
+            <p id="termsDialogDescription" class="sr-only">본 약관은 개인정보 수집 및 이용에 관한 내용입니다. (스크린 리더로 읽어주는 내용)</p>
+            <div class="dialog__body">
+                <p class="dialog__body-text">본 약관에 동의하지 않으시면 서비스 이용이 제한될 수 있습니다. 중요한 약관 내용이므로 신중히 검토해 주시기 바랍니다.</p>
+                <p>... 금융 서비스 약관 내용 상세 ...</p>
+                <p><strong>제 1조 (목적)</strong> 이 약관은 [회사명] (이하 "회사")이 제공하는 [서비스명] 서비스 이용과 관련하여 회사와 회원 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+                <!-- 중첩 다이얼로그를 여는 버튼 추가 -->
+                <button class="button button--secondary" data-dialog-open="nestedDialog">상세 보기 (중첩 다이얼로그)</button>
+            </div>
+            <div class="dialog__actions">
+                <button class="button button--primary" data-dialog-confirm>동의</button>
+                <button class="dialog__close-btn" data-dialog-close aria-label="닫기">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 다이얼로그(모달) 마크업 2: 독립적인 정보 알림 다이얼로그 -->
+    <div id="infoDialog" class="dialog" data-dialog role="dialog" aria-modal="true" aria-labelledby="infoDialogTitle">
+        <div class="dialog__content">
+            <h2 id="infoDialogTitle" class="dialog__title">공지사항</h2>
+            <p id="infoDialogDescription" class="sr-only">이것은 중요한 공지사항입니다.</p>
+            <div class="dialog__body">
+                <p class="dialog__body-text">새로운 보안 업데이트가 적용되었습니다. 서비스 이용에 참고해 주시기 바랍니다.</p>
+                <p>자세한 내용은 고객센터를 통해 확인하실 수 있습니다.</p>
+            </div>
+            <div class="dialog__actions">
+                <button class="button button--primary" data-dialog-confirm>확인했습니다</button>
+                <button class="dialog__close-btn" data-dialog-close aria-label="닫기">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 다이얼로그(모달) 마크업 3: 중첩 다이얼로그 (메인 약관 다이얼로그 안에서 열림) -->
+    <div id="nestedDialog" class="dialog dialog--nested" data-dialog role="dialog" aria-modal="true" aria-labelledby="nestedDialogTitle">
+        <div class="dialog__content">
+            <h2 id="nestedDialogTitle" class="dialog__title">추가 약관 상세</h2>
+            <p id="nestedDialogDescription" class="sr-only">메인 약관 다이얼로그에서 열린 추가 상세 약관입니다.</p>
+            <div class="dialog__body">
+                <p class="dialog__body-text">여기에는 메인 약관에 대한 더 깊이 있는 세부 정보가 포함됩니다.</p>
+                <p>예: 제 3조 (개인정보 보호 의무) 회사는 관계 법령이 정하는 바에 따라 회원의 개인정보를 보호하기 위해 노력하며...</p>
+                <p>... 더 많은 상세 약관 ...</p>
+            </div>
+            <div class="dialog__actions">
+                <button class="button button--secondary" data-dialog-confirm>이해했습니다</button>
+                <button class="dialog__close-btn" data-dialog-close aria-label="닫기">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 다이얼로그(모달) 마크업 4: 새로운 다이얼로그 추가 (data-속성으로 쉽게 추가 가능) -->
+    <div id="anotherDialog" class="dialog" data-dialog role="dialog" aria-modal="true" aria-labelledby="anotherDialogTitle">
+        <div class="dialog__content">
+            <h2 id="anotherDialogTitle" class="dialog__title">새로운 다이얼로그</h2>
+            <p class="dialog__body-text">이 다이얼로그는 data-속성으로 쉽게 추가되었습니다!</p>
+            <div class="dialog__actions">
+                <button class="button button--primary" data-dialog-confirm>확인</button>
+                <button class="dialog__close-btn" data-dialog-close aria-label="닫기">×</button>
+            </div>
+        </div>
+    </div>
+    
+    <p>... 아래에 다른 컨텐츠들이 있습니다. 스크롤을 내려보세요. 모달이 열리면 스크롤이 잠깁니다. ...</p>
+    <div style="height: 1500px; background-color: #e6f7ff; padding: 20px; border-radius: 8px; margin-top: 20px;">
+        <h3>여기는 뒷 배경 컨텐츠입니다.</h3>
+        <p>모달이 열리면 이 영역의 스크롤은 비활성화됩니다.</p>
+        <p>스크롤을 테스트하기 위해 충분히 긴 내용을 추가했습니다.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perferendis eligendi, recusandae sapiente quae fugit non error, ducimus illum quos debitis rerum laudantium vero vel, ab consectetur distinctio obcaecati reiciendis!</p>
+        <p>Voluptate, eveniet! Provident, dolorum illum! Minus perferendis consectetur, ducimus dignissimos animi sequi. Ipsa, non! Provident fuga perferendis temporibus! Facere totam architecto dignissimos. Quo, reiciendis. Dolorum, eaque. Doloremque, rerum fuga?</p>
+        <p>Tempora ipsam vero quas obcaecati laboriosam iste voluptatibus. Numquam, officia? Aliquam, voluptatem! Voluptatum, recusandae nisi. Laudantium, molestiae! Repudiandae reiciendis doloremque ea voluptatibus quam cumque est non, veritatis sint!</p>
+        <p>Quidem perferendis, eum dolor error cumque voluptatibus distinctio in consectetur odit unde quas ipsam, dolores officiis aut! Voluptatem sint, reiciendis quia voluptatum nulla omnis ab cumque magnam eveniet. Accusantium, quod.</p>
+        <p>Earum, iste culpa maiores nemo aliquid animi commodi distinctio! Quae modi quos alias sint sequi, eum, minus rerum ducimus iste tempora id vero laboriosam excepturi. Dolorum iusto at animi. Fugit?</p>
+        <p>... 스크롤 테스트용 컨텐츠 계속 ...</p>
+    </div>
+
+    <script>
+        /**
+         * Button 컴포넌트 클래스
+         * BEM 명명 규칙 및 웹 접근성을 준수합니다.
+         * 이 컴포넌트는 HTML <button> 요소에 BEM 스타일 클래스를 적용하고,
+         * disabled 상태를 제어하며, 클릭 이벤트를 관리합니다.
+         */
+        class Button {
+            constructor(element, options = {}) {
+                this.buttonElement = element;
+                this.options = {
+                    type: options.type || 'default', // 'primary', 'secondary', 'default'
+                    initialState: options.initialState || {}, // { disabled: true, active: false }
+                    onClick: options.onClick || (() => {}) // 명시적인 onClick 핸들러
+                };
+
+                this._init();
+                this._addEventListeners();
+            }
+
+            _init() {
+                // 초기 타입 클래스 적용
+                if (this.options.type === 'primary') {
+                    this.buttonElement.classList.add('button--primary');
+                } else if (this.options.type === 'secondary') {
+                    this.buttonElement.classList.add('button--secondary');
+                }
+                // 'button' 블록 클래스는 HTML에 미리 추가되어 있다고 가정
+
+                // 초기 상태 적용
+                if (this.options.initialState.disabled) {
+                    this.disable();
+                }
+                if (this.options.initialState.active) {
+                    this.activate();
+                }
+            }
+
+            _addEventListeners() {
+                // 명시적인 onClick이 있는 경우에만 이벤트 리스너 추가
+                if (this.options.onClick) {
+                    this.buttonElement.addEventListener('click', this.options.onClick);
+                }
+            }
+
+            /**
+             * 버튼을 활성화합니다. disabled 속성을 제거하고 관련 클래스를 제거합니다.
+             */
+            enable() {
+                this.buttonElement.disabled = false;
+                this.buttonElement.classList.remove('button--disabled');
+            }
+
+            /**
+             * 버튼을 비활성화합니다. disabled 속성을 추가하고 관련 클래스를 추가합니다.
+             */
+            disable() {
+                this.buttonElement.disabled = true;
+                this.buttonElement.classList.add('button--disabled');
+            }
+
+            /**
+             * 버튼을 활성(Active) 상태로 만듭니다. (시각적 피드백용)
+             */
+            activate() {
+                this.buttonElement.classList.add('button--active');
+            }
+
+            /**
+             * 버튼의 활성(Active) 상태를 해제합니다.
+             */
+            deactivate() {
+                this.buttonElement.classList.remove('button--active');
+            }
+
+            /**
+             * 버튼 클릭 시 실행될 콜백 함수를 변경합니다.
+             * @param {function} newCallback - 새로운 클릭 이벤트 핸들러
+             */
+            setOnClickListener(newCallback) {
+                // 기존 리스너 제거
+                if (this.options.onClick) {
+                    this.buttonElement.removeEventListener('click', this.options.onClick);
+                }
+                this.options.onClick = newCallback;
+                // 새로운 리스너 추가
+                if (this.options.onClick) {
+                    this.buttonElement.addEventListener('click', this.options.onClick);
+                }
+            }
+        }
+
+
+        /**
+         * Dialog (Modal) 컴포넌트 클래스
+         * BEM 명명 규칙, 웹 접근성, body 스크롤 제어를 준수합니다.
+         * 여러 다이얼로그가 열려도 body 스크롤이 유지되다가
+         * 모든 다이얼로그가 닫혀야만 body 스크롤이 다시 활성화됩니다.
+         */
+        class Dialog {
+            // 현재 열려있는 다이얼로그 인스턴스들을 관리하는 정적(static) 배열
+            static activeDialogs = [];
+
+            constructor(element) {
+                this.dialogElement = element;
+                this.dialogId = element.id; // 다이얼로그의 ID를 저장
+
+                this.closeButtons = this.dialogElement.querySelectorAll('[data-dialog-close]');
+                this.confirmButtons = this.dialogElement.querySelectorAll('[data-dialog-confirm]');
+
+                this.previouslyFocusedElement = null;
+                this.focusableElements = [];
+
+                this._addEventListeners();
+            }
+
+            _addEventListeners() {
+                this.closeButtons.forEach(btn => {
+                    btn.addEventListener('click', this.close.bind(this));
+                });
+                this.confirmButtons.forEach(btn => {
+                    btn.addEventListener('click', this.close.bind(this)); // 확인 버튼도 닫기 기능으로 연결 (프로젝트별로 다를 수 있음)
+                });
+                // 키보드 이벤트는 전역에서 처리하므로 여기서는 추가하지 않음
+            }
+
+            /**
+             * 다이얼로그를 엽니다.
+             * - `dialog--is-open` 클래스 추가
+             * - `body--no-scroll` 클래스 추가 (스크롤 방지)
+             * - 포커스 트랩 설정 및 첫 포커스 요소로 이동
+             */
+            open() {
+                this.previouslyFocusedElement = document.activeElement; // 열기 전 포커스 저장
+                this.dialogElement.classList.add('dialog--is-open');
+                
+                // Dialog.activeDialogs에 현재 다이얼로그 추가
+                Dialog.activeDialogs.push(this);
+
+                // 모든 다이얼로그를 통틀어 처음 열리는 경우에만 body 스크롤 막기
+                if (Dialog.activeDialogs.length === 1) {
+                    document.body.classList.add('body--no-scroll');
+                }
+                
+                this._trapFocus();
+                // 닫기 버튼 또는 포커스 가능한 첫 번째 요소로 초기 포커스 이동
+                (this.closeButtons[0] || this.firstFocusableElement || this.dialogElement).focus();
+            }
+
+            /**
+             * 다이얼로그를 닫습니다.
+             * - `dialog--is-open` 클래스 제거
+             * - `body--no-scroll` 클래스 제거 (스크롤 허용)
+             * - 원래 포커스 위치로 복원
+             */
+            close() {
+                this.dialogElement.classList.remove('dialog--is-open');
+                
+                // Dialog.activeDialogs에서 현재 다이얼로그 제거
+                Dialog.activeDialogs = Dialog.activeDialogs.filter(dialog => dialog !== this);
+
+                // 모든 다이얼로그를 통틀어 마지막 다이얼로그가 닫히는 경우에만 body 스크롤 허용
+                if (Dialog.activeDialogs.length === 0) {
+                    document.body.classList.remove('body--no-scroll');
+                }
+
+                // 포커스를 원래 위치로 복원하거나, 열려있는 다른 다이얼로그가 있다면 그 다이얼로그로 이동
+                if (Dialog.activeDialogs.length > 0) {
+                    // 가장 최근에 열린 (아직 닫히지 않은) 다이얼로그로 포커스 이동
+                    const topDialog = Dialog.activeDialogs[Dialog.activeDialogs.length - 1];
+                    (topDialog.closeButtons[0] || topDialog.firstFocusableElement || topDialog.dialogElement).focus();
+                } else if (this.previouslyFocusedElement) {
+                    // 모든 다이얼로그가 닫혔다면, 처음 다이얼로그를 열었던 요소로 포커스 복원
+                    this.previouslyFocusedElement.focus();
+                }
+            }
+
+            /**
+             * 다이얼로그 내부에서 포커스 가능한 요소들을 찾아 배열에 저장합니다.
+             */
+            _trapFocus() {
+                const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+                this.focusableElements = Array.from(this.dialogElement.querySelectorAll(focusableSelectors))
+                                            .filter(el => !el.disabled && el.offsetParent !== null); // 비활성화되거나 숨겨진 요소 제외
+
+                // 포커스 가능한 요소가 없는 경우를 대비 (최소한 닫기 버튼은 있어야 함)
+                if (this.focusableElements.length === 0 && this.closeButtons[0]) {
+                    this.focusableElements.push(this.closeButtons[0]);
+                }
+
+                this.firstFocusableElement = this.focusableElements[0];
+                this.lastFocusableElement = this.focusableElements[this.focusableElements.length - 1];
+            }
+
+            /**
+             * 키보드 이벤트 (ESC, Tab) 처리 핸들러는 전역에서 관리합니다.
+             * 이 메서드는 외부에서 호출됩니다.
+             * @param {KeyboardEvent} event
+             */
+            handleGlobalKeyDown(event) {
+                // 현재 가장 상위에 열려있는 다이얼로그가 이 다이얼로그인지 확인
+                const topDialog = Dialog.activeDialogs[Dialog.activeDialogs.length - 1];
+                if (!topDialog || topDialog.dialogElement !== this.dialogElement) {
+                    return; // 최상위 다이얼로그가 아니면 처리하지 않음
+                }
+
+                // ESC 키로 닫기
+                if (event.key === 'Escape' || event.key === 'Esc') {
+                    this.close();
+                    event.preventDefault(); // 기본 ESC 동작 방지
+                    return;
+                }
+
+                // TAB 키로 포커스 순환
+                if (event.key === 'Tab') {
+                    const isFirstElementFocused = document.activeElement === this.firstFocusableElement;
+                    const isLastElementFocused = document.activeElement === this.lastFocusableElement;
+
+                    if (event.shiftKey) { // Shift + Tab (역방향)
+                        if (isFirstElementFocused) {
+                            this.lastFocusableElement.focus();
+                            event.preventDefault(); // 기본 Tab 동작 방지
+                        }
+                    } else { // Tab (정방향)
+                        if (isLastElementFocused) {
+                            this.firstFocusableElement.focus();
+                            event.preventDefault(); // 기본 Tab 동작 방지
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // =========================================================
+        // 전역 초기화 스크립트 (data- 속성 기반)
+        // =========================================================
+        const dialogInstances = new Map(); // 모든 Dialog 인스턴스를 저장할 Map
+
+        /**
+         * 페이지 내 모든 data-dialog 요소를 찾아 Dialog 컴포넌트를 초기화합니다.
+         */
+        function initAllDialogs() {
+            const dialogElements = document.querySelectorAll('[data-dialog]');
+            dialogElements.forEach(element => {
+                const dialogId = element.id;
+                if (!dialogId) {
+                    console.error('Dialog id가 없습니다.', element);
+                    return;
+                }
+                const dialogInstance = new Dialog(element);
+                dialogInstances.set(dialogId, dialogInstance);
+            });
+        }
+
+        /**
+         * data-dialog-open 속성을 가진 모든 버튼에 클릭 이벤트를 위임하여 다이얼로그를 엽니다.
+         */
+        function attachGlobalOpenDialogListeners() {
+            document.body.addEventListener('click', (event) => {
+                const openButton = event.target.closest('[data-dialog-open]');
+                if (openButton) {
+                    const targetDialogId = openButton.dataset.dialogOpen;
+                    const dialogToOpen = dialogInstances.get(targetDialogId);
+                    if (dialogToOpen) {
+                        dialogToOpen.open();
+                    } else {
+                        console.error(`Dialog with ID "${targetDialogId}" not found.`);
+                    }
+                }
+            });
+        }
+
+        /**
+         * 전역 키보드 이벤트를 처리하여 ESC/Tab 동작을 현재 최상위 다이얼로그에 위임합니다.
+         */
+        function attachGlobalKeyboardListeners() {
+            document.addEventListener('keydown', (event) => {
+                const topDialog = Dialog.activeDialogs[Dialog.activeDialogs.length - 1];
+                if (topDialog) {
+                    // 최상위 다이얼로그의 키보드 핸들러를 호출
+                    topDialog.handleGlobalKeyDown(event);
+                }
+            });
+        }
+
+
+        // DOMContentLoaded 이벤트 발생 시 모든 컴포넌트 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            // 모든 Dialog 컴포넌트 자동 초기화
+            initAllDialogs();
+
+            // data-dialog-open 버튼에 대한 전역 이벤트 리스너 부착
+            attachGlobalOpenDialogListeners();
+
+            // 전역 키보드 이벤트 리스너 부착
+            attachGlobalKeyboardListeners();
+
+            // =========================================================
+            // Button 컴포넌트 초기화 및 테스트 (다이얼로그 여는 버튼이 아닌 일반 버튼들)
+            // =========================================================
+            // data-dialog-open 속성이 없는 버튼만 Button 컴포넌트로 초기화
+            document.querySelectorAll('button:not([data-dialog-open])').forEach(buttonElement => {
+                // HTML 클래스에 따라 초기 타입 추론
+                let buttonType = 'default';
+                if (buttonElement.classList.contains('button--primary')) {
+                    buttonType = 'primary';
+                } else if (buttonElement.classList.contains('button--secondary')) {
+                    buttonType = 'secondary';
+                }
+
+                // 예시: 특정 버튼들에 대한 추가 로직 (ID 기반)
+                if (buttonElement.id === 'toggleActiveBtn') {
+                    new Button(buttonElement, {
+                        type: buttonType,
+                        onClick: (event) => {
+                            if (event.currentTarget.classList.contains('button--active')) {
+                                event.currentTarget.classList.remove('button--active');
+                                console.log('활성 상태 해제');
+                            } else {
+                                event.currentTarget.classList.add('button--active');
+                                console.log('활성 상태 설정');
+                            }
+                        }
+                    });
+                } else if (buttonElement.id === 'toggleDisableBtn') {
+                     new Button(buttonElement, {
+                        type: buttonType,
+                        onClick: (event) => {
+                            if (event.currentTarget.disabled) {
+                                event.currentTarget.disabled = false;
+                                event.currentTarget.classList.remove('button--disabled');
+                                console.log('버튼 활성화');
+                            } else {
+                                event.currentTarget.disabled = true;
+                                event.currentTarget.classList.add('button--disabled');
+                                console.log('버튼 비활성화');
+                            }
+                        }
+                    });
+                } else {
+                    // 나머지 일반 버튼들은 기본 동작만 연결
+                    new Button(buttonElement, {
+                        type: buttonType,
+                        initialState: { disabled: buttonElement.disabled }, // HTML의 disabled 상태도 초기화에 반영
+                        onClick: () => console.log(`${buttonElement.textContent} 클릭!`)
+                    });
+                }
+            });
+
+            // Dialog 컴포넌트 내부에 있는 버튼들도 Button 컴포넌트로 초기화 (선택 사항)
+            // .dialog__actions 내부의 버튼들을 찾아 Button 컴포넌트로 만듭니다.
+            document.querySelectorAll('.dialog__actions .button').forEach(dialogButtonElement => {
+                let buttonType = 'default';
+                if (dialogButtonElement.classList.contains('button--primary')) {
+                    buttonType = 'primary';
+                } else if (dialogButtonElement.classList.contains('button--secondary')) {
+                    buttonType = 'secondary';
+                }
+                // data-dialog-close, data-dialog-confirm 버튼은 Dialog 클래스에서 이벤트 처리하므로
+                // Button 컴포넌트의 onClick에는 기본 동작만 넣어줍니다.
+                new Button(dialogButtonElement, {
+                    type: buttonType,
+                    onClick: () => console.log(`Dialog 내부 ${dialogButtonElement.textContent} 버튼 클릭!`)
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .radio {
+        @extend .checkbox;
+
+        input + .custom {
+          border-radius: 50%;
+        }
+
+        input:checked + .custom::after {
+          width: 8px;
+          height: 8px;
+          margin: 4px;
+          border-radius: 50%;
+        }
+      }
+
+  </style>
+</head>
+<body>
+  <div role="radiogroup" aria-labelledby="radioLabel">
+  <span id="radioLabel" class="sr-only">결제수단 선택</span>
+
+  <label class="radio">
+    <input type="radio" name="pay" />
+    <span class="custom"></span>
+    카드결제
+  </label>
+
+  <label class="radio">
+    <input type="radio" name="pay" />
+    <span class="custom"></span>
+    계좌이체
+  </label>
+</div>
+
+
+</body>
+</html>

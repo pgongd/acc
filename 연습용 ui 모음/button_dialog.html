@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 접근성 BEM 버튼 및 다이얼로그</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Inter', sans-serif; /* 폰트 적용 */
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #343a40;
+            line-height: 1.6;
+        }
+
+        /* body 스크롤 방지 클래스 */
+        .body--no-scroll {
+            overflow: hidden;
+        }
+        
+        /* 버튼 컨테이너 스타일 */
+        .button-container {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Button 컴포넌트 BEM 스타일 */
+        .button {
+            padding: 12px 24px;
+            border-radius: 8px; /* 둥근 모서리 */
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border: 1px solid transparent;
+            margin: 0 10px 10px 0; /* 버튼 간격 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+            text-decoration: none; /* 링크 버튼 대비 */
+            display: inline-flex; /* 텍스트 정렬 및 패딩 */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Primary Button */
+        .button--primary {
+            background-color: #007bff; /* 파란색 */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+        }
+        .button--primary:hover:not(:disabled) {
+            background-color: #0056b3;
+            box-shadow: 0 6px 8px rgba(0, 123, 255, 0.3);
+        }
+        .button--primary:focus-visible:not(:disabled) { /* focus-visible 사용 */
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4);
+            outline: none;
+        }
+
+        /* Secondary Button */
+        .button--secondary {
+            background-color: white;
+            color: #007bff;
+            border-color: #007bff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .button--secondary:hover:not(:disabled) {
+            background-color: #e9ecef;
+            color: #0056b3;
+            border-color: #0056b3;
+        }
+        .button--secondary:focus-visible:not(:disabled) { /* focus-visible 사용 */
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4);
+            outline: none;
+        }
+
+        /* Active State */
+        .button--active {
+            transform: translateY(1px);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        }
+
+        /* Disabled State */
+        .button--disabled,
+        .button:disabled { /* 실제 disabled 속성도 함께 처리 */
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #ccc !important; /* disabled 시 색상 고정 */
+            color: #666 !important;
+            border-color: #bbb !important;
+            box-shadow: none !important;
+        }
+        .button--primary.button--disabled {
+            background-color: #a0cffc !important;
+            color: #fff !important;
+        }
+        .button--secondary.button--disabled {
+            background-color: #f8f9fa !important;
+            color: #a0cffc !important;
+            border-color: #a0cffc !important;
+        }
+
+
+        /* Dialog (Modal) 컴포넌트 BEM 스타일 */
+        .dialog {
+            display: none; /* 초기 상태는 숨김 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out; /* 등장 애니메이션 */
+        }
+        .dialog--is-open {
+            display: flex; /* flexbox를 사용하여 중앙 정렬 */
+            justify-content: center;
+            align-items: center;
+        }
+        .dialog__content {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 90%; /* 모바일 대응 */
+            width: 500px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: slideIn 0.3s ease-out; /* 내용 등장 애니메이션 */
+        }
+        @media (min-width: 768px) { /* 태블릿 이상에서 최대 너비 조절 */
+            .dialog__content {
+                max-width: 600px;
+            }
+        }
+        .dialog__title {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .dialog__body-text {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .dialog__close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: 0;
+            cursor: pointer;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #666;
+            transition: color 0.2s ease-in-out;
+        }
+        .dialog__close-btn:hover {
+            color: #000;
+        }
+        .dialog__actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        /* 애니메이션 키프레임 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* 시각적 숨김 (스크린 리더 전용) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BEM 기반 웹 접근성 컴포넌트 예제</h1>
+
+    <div class="button-container">
+        <h2>버튼 컴포넌트</h2>
+        <!-- Dialog를 여는 버튼 -->
+        <button id="openDialogPrimaryBtn" class="button button--primary">약관 보기 (Primary)</button>
+        <button id="openDialogSecondaryBtn" class="button button--secondary">약관 보기 (Secondary)</button>
+
+        <!-- 다양한 상태의 버튼 예시 -->
+        <button id="normalPrimaryBtn" class="button">일반 버튼 (클래스 없음)</button>
+        <button id="activePrimaryBtn" class="button button--primary button--active">활성 버튼 (Primary)</button>
+        <button id="disabledPrimaryBtn" class="button button--primary" disabled>비활성 버튼 (Primary)</button>
+        <button id="activeSecondaryBtn" class="button button--secondary button--active">활성 버튼 (Secondary)</button>
+        <button id="disabledSecondaryBtn" class="button button--secondary" disabled>비활성 버튼 (Secondary)</button>
+        <button id="toggleActiveBtn" class="button button--secondary">활성/비활성 토글</button>
+        <button id="toggleDisableBtn" class="button button--primary">활성/비활성 (disabled 속성) 토글</button>
+    </div>
+
+    <!-- 다이얼로그(모달) 마크업 -->
+    <div id="termsDialog" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+        <div class="dialog__content">
+            <h2 id="dialogTitle" class="dialog__title">개인정보 수집 및 이용 동의</h2>
+            <p id="dialogDescription" class="sr-only">본 약관은 개인정보 수집 및 이용에 관한 내용입니다. (스크린 리더로 읽어주는 내용)</p>
+            <div class="dialog__body">
+                <p class="dialog__body-text">본 약관에 동의하지 않으시면 서비스 이용이 제한될 수 있습니다. 중요한 약관 내용이므로 신중히 검토해 주시기 바랍니다.</p>
+                <p>... 금융 서비스 약관 내용 상세 ...</p>
+                <p><strong>제 1조 (목적)</strong> 이 약관은 [회사명] (이하 "회사")이 제공하는 [서비스명] 서비스 이용과 관련하여 회사와 회원 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+                <p><strong>제 2조 (정의)</strong> 이 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>
+                <ul>
+                    <li>"서비스"라 함은 구현되는 단말기(PC, 휴대용단말기 등의 각종 유무선 장치를 포함)와 상관없이 회원이 이용할 수 있는 [회사명] 관련 제반 서비스를 의미합니다.</li>
+                    <li>"회원"이라 함은 회사의 서비스에 접속하여 이 약관에 따라 회사와 이용계약을 체결하고 회사가 제공하는 서비스를 이용하는 고객을 말합니다.</li>
+                </ul>
+                <p>... 더 많은 약관 내용 ...</p>
+            </div>
+            <div class="dialog__actions">
+                <button id="dialogConfirmBtn" class="button button--primary">확인</button>
+                <button class="dialog__close-btn" aria-label="닫기">×</button>
+            </div>
+        </div>
+    </div>
+    
+    <p>... 아래에 다른 컨텐츠들이 있습니다. 스크롤을 내려보세요. 모달이 열리면 스크롤이 잠깁니다. ...</p>
+    <div style="height: 1500px; background-color: #e6f7ff; padding: 20px; border-radius: 8px; margin-top: 20px;">
+        <h3>여기는 뒷 배경 컨텐츠입니다.</h3>
+        <p>모달이 열리면 이 영역의 스크롤은 비활성화됩니다.</p>
+        <p>스크롤을 테스트하기 위해 충분히 긴 내용을 추가했습니다.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perferendis eligendi, recusandae sapiente quae fugit non error, ducimus illum quos debitis rerum laudantium vero vel, ab consectetur distinctio obcaecati reiciendis!</p>
+        <p>Voluptate, eveniet! Provident, dolorum illum! Minus perferendis consectetur, ducimus dignissimos animi sequi. Ipsa, non! Provident fuga perferendis temporibus! Facere totam architecto dignissimos. Quo, reiciendis. Dolorum, eaque. Doloremque, rerum fuga?</p>
+        <p>Tempora ipsam vero quas obcaecati laboriosam iste voluptatibus. Numquam, officia? Aliquam, voluptatem! Voluptatum, recusandae nisi. Laudantium, molestiae! Repudiandae reiciendis doloremque ea voluptatibus quam cumque est non, veritatis sint!</p>
+        <p>Quidem perferendis, eum dolor error cumque voluptatibus distinctio in consectetur odit unde quas ipsam, dolores officiis aut! Voluptatem sint, reiciendis quia voluptatum nulla omnis ab cumque magnam eveniet. Accusantium, quod.</p>
+        <p>Earum, iste culpa maiores nemo aliquid animi commodi distinctio! Quae modi quos alias sint sequi, eum, minus rerum ducimus iste tempora id vero laboriosam excepturi. Dolorum iusto at animi. Fugit?</p>
+        <p>... 스크롤 테스트용 컨텐츠 계속 ...</p>
+    </div>
+
+    <script>
+        /**
+         * Button 컴포넌트 클래스
+         * BEM 명명 규칙 및 웹 접근성을 준수합니다.
+         */
+        class Button {
+            constructor(element, options = {}) {
+                this.buttonElement = element;
+                this.options = {
+                    type: options.type || 'default', // 'primary', 'secondary', 'default'
+                    initialState: options.initialState || {}, // { disabled: true, active: false }
+                    onClick: options.onClick || (() => {})
+                };
+
+                this._init();
+                this._addEventListeners();
+            }
+
+            _init() {
+                // 초기 타입 클래스 적용
+                if (this.options.type === 'primary') {
+                    this.buttonElement.classList.add('button--primary');
+                } else if (this.options.type === 'secondary') {
+                    this.buttonElement.classList.add('button--secondary');
+                }
+                // 'button' 블록 클래스는 HTML에 미리 추가되어 있다고 가정
+
+                // 초기 상태 적용
+                if (this.options.initialState.disabled) {
+                    this.disable();
+                }
+                if (this.options.initialState.active) {
+                    this.activate();
+                }
+            }
+
+            _addEventListeners() {
+                this.buttonElement.addEventListener('click', this.options.onClick);
+            }
+
+            /**
+             * 버튼을 활성화합니다. disabled 속성을 제거하고 관련 클래스를 제거합니다.
+             */
+            enable() {
+                this.buttonElement.disabled = false;
+                this.buttonElement.classList.remove('button--disabled');
+            }
+
+            /**
+             * 버튼을 비활성화합니다. disabled 속성을 추가하고 관련 클래스를 추가합니다.
+             */
+            disable() {
+                this.buttonElement.disabled = true;
+                this.buttonElement.classList.add('button--disabled');
+            }
+
+            /**
+             * 버튼을 활성(Active) 상태로 만듭니다. (시각적 피드백용)
+             */
+            activate() {
+                this.buttonElement.classList.add('button--active');
+            }
+
+            /**
+             * 버튼의 활성(Active) 상태를 해제합니다.
+             */
+            deactivate() {
+                this.buttonElement.classList.remove('button--active');
+            }
+
+            /**
+             * 버튼 클릭 시 실행될 콜백 함수를 변경합니다.
+             * @param {function} newCallback - 새로운 클릭 이벤트 핸들러
+             */
+            setOnClickListener(newCallback) {
+                this.buttonElement.removeEventListener('click', this.options.onClick);
+                this.options.onClick = newCallback;
+                this.buttonElement.addEventListener('click', this.options.onClick);
+            }
+        }
+
+
+        /**
+         * Dialog (Modal) 컴포넌트 클래스
+         * BEM 명명 규칙, 웹 접근성, body 스크롤 제어를 준수합니다.
+         */
+        class Dialog {
+            constructor(element, options = {}) {
+                this.dialogElement = element;
+                this.openButton = options.openBtn; // 다이얼로그를 여는 버튼
+                this.closeButton = this.dialogElement.querySelector('.dialog__close-btn');
+                this.confirmButton = this.dialogElement.querySelector('#dialogConfirmBtn'); // 확인 버튼 추가
+
+                this.previouslyFocusedElement = null; // 다이얼로그 열기 전 포커스 요소
+                this.focusableElements = []; // 다이얼로그 내부에서 포커스 가능한 요소들
+
+                this._addEventListeners();
+            }
+
+            _addEventListeners() {
+                if (this.openButton) {
+                    this.openButton.addEventListener('click', this.open.bind(this));
+                }
+                this.closeButton.addEventListener('click', this.close.bind(this));
+                // 확인 버튼 클릭 시 다이얼로그 닫기 (예시)
+                if (this.confirmButton) {
+                    this.confirmButton.addEventListener('click', this.close.bind(this));
+                }
+                document.addEventListener('keydown', this._handleKeyDown.bind(this));
+            }
+
+            /**
+             * 다이얼로그를 엽니다.
+             * - `dialog--is-open` 클래스 추가
+             * - `body--no-scroll` 클래스 추가 (스크롤 방지)
+             * - 포커스 트랩 설정 및 첫 포커스 요소로 이동
+             */
+            open() {
+                this.previouslyFocusedElement = document.activeElement; // 열기 전 포커스 저장
+                this.dialogElement.classList.add('dialog--is-open');
+                document.body.classList.add('body--no-scroll'); // body 스크롤 막기
+                this._trapFocus();
+                this.closeButton.focus(); // 닫기 버튼으로 초기 포커스 이동
+            }
+
+            /**
+             * 다이얼로그를 닫습니다.
+             * - `dialog--is-open` 클래스 제거
+             * - `body--no-scroll` 클래스 제거 (스크롤 허용)
+             * - 원래 포커스 위치로 복원
+             */
+            close() {
+                this.dialogElement.classList.remove('dialog--is-open');
+                document.body.classList.remove('body--no-scroll'); // body 스크롤 허용
+                if (this.previouslyFocusedElement) {
+                    this.previouslyFocusedElement.focus();
+                }
+            }
+
+            /**
+             * 다이얼로그 내부에서 포커스 가능한 요소들을 찾아 배열에 저장합니다.
+             */
+            _trapFocus() {
+                const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+                this.focusableElements = Array.from(this.dialogElement.querySelectorAll(focusableSelectors))
+                                            .filter(el => !el.disabled && el.offsetParent !== null); // 비활성화되거나 숨겨진 요소 제외
+
+                // 포커스 가능한 요소가 없는 경우를 대비 (최소한 닫기 버튼은 있어야 함)
+                if (this.focusableElements.length === 0 && this.closeButton) {
+                    this.focusableElements.push(this.closeButton);
+                }
+
+                this.firstFocusableElement = this.focusableElements[0];
+                this.lastFocusableElement = this.focusableElements[this.focusableElements.length - 1];
+            }
+
+            /**
+             * 키보드 이벤트 (ESC, Tab) 처리 핸들러
+             * - ESC 키로 다이얼로그 닫기
+             * - Tab 키로 다이얼로그 내부에서 포커스 순환 (Focus Trap)
+             * @param {KeyboardEvent} event
+             */
+            _handleKeyDown(event) {
+                if (!this.dialogElement.classList.contains('dialog--is-open')) return;
+
+                // ESC 키로 닫기
+                if (event.key === 'Escape' || event.key === 'Esc') {
+                    this.close();
+                    event.preventDefault(); // 기본 ESC 동작 방지
+                    return;
+                }
+
+                // TAB 키로 포커스 순환
+                if (event.key === 'Tab') {
+                    const isFirstElementFocused = document.activeElement === this.firstFocusableElement;
+                    const isLastElementFocused = document.activeElement === this.lastFocusableElement;
+
+                    if (event.shiftKey) { // Shift + Tab (역방향)
+                        if (isFirstElementFocused) {
+                            this.lastFocusableElement.focus();
+                            event.preventDefault(); // 기본 Tab 동작 방지
+                        }
+                    } else { // Tab (정방향)
+                        if (isLastElementFocused) {
+                            this.firstFocusableElement.focus();
+                            event.preventDefault(); // 기본 Tab 동작 방지
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // DOMContentLoaded 이벤트 발생 시 컴포넌트 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            // =========================================================
+            // Dialog 컴포넌트 초기화
+            // =========================================================
+            const termsDialogElement = document.getElementById('termsDialog');
+            const openDialogPrimaryBtnElement = document.getElementById('openDialogPrimaryBtn');
+            const openDialogSecondaryBtnElement = document.getElementById('openDialogSecondaryBtn');
+            
+            // 다이얼로그 인스턴스 생성
+            const termsDialog = new Dialog(termsDialogElement);
+
+            // Button 컴포넌트를 사용하여 다이얼로그 여는 버튼 생성
+            new Button(openDialogPrimaryBtnElement, {
+                type: 'primary',
+                onClick: () => termsDialog.open() // 클릭 시 다이얼로그 열기
+            });
+            new Button(openDialogSecondaryBtnElement, {
+                type: 'secondary',
+                onClick: () => termsDialog.open() // 클릭 시 다이얼로그 열기
+            });
+
+            // =========================================================
+            // Button 컴포넌트 초기화 및 테스트
+            // =========================================================
+
+            // 일반 버튼 (클래스 없음)
+            new Button(document.getElementById('normalPrimaryBtn'), {
+                type: 'primary', // 초기 타입만 지정
+                onClick: () => console.log('일반 프라이머리 버튼 클릭!')
+            });
+
+            // 활성 버튼 (초기 상태가 활성)
+            const activePrimaryBtn = new Button(document.getElementById('activePrimaryBtn'), {
+                type: 'primary',
+                initialState: { active: true },
+                onClick: () => console.log('활성 프라이머리 버튼 클릭!')
+            });
+
+            // 비활성 버튼 (초기 상태가 비활성)
+            const disabledPrimaryBtn = new Button(document.getElementById('disabledPrimaryBtn'), {
+                type: 'primary',
+                initialState: { disabled: true },
+                onClick: () => console.log('비활성 프라이머리 버튼 클릭!') // 이 메시지는 출력되지 않음
+            });
+
+            // 활성 세컨더리 버튼
+            const activeSecondaryBtn = new Button(document.getElementById('activeSecondaryBtn'), {
+                type: 'secondary',
+                initialState: { active: true },
+                onClick: () => console.log('활성 세컨더리 버튼 클릭!')
+            });
+
+            // 비활성 세컨더리 버튼
+            const disabledSecondaryBtn = new Button(document.getElementById('disabledSecondaryBtn'), {
+                type: 'secondary',
+                initialState: { disabled: true },
+                onClick: () => console.log('비활성 세컨더리 버튼 클릭!') // 이 메시지는 출력되지 않음
+            });
+
+
+            // 활성/비활성 토글 버튼
+            const toggleActiveBtn = new Button(document.getElementById('toggleActiveBtn'), {
+                type: 'secondary',
+                onClick: (event) => {
+                    if (event.currentTarget.classList.contains('button--active')) {
+                        toggleActiveBtn.deactivate();
+                        console.log('활성 상태 해제');
+                    } else {
+                        toggleActiveBtn.activate();
+                        console.log('활성 상태 설정');
+                    }
+                }
+            });
+
+            // 비활성(disabled 속성) 토글 버튼
+            const toggleDisableBtn = new Button(document.getElementById('toggleDisableBtn'), {
+                type: 'primary',
+                onClick: (event) => {
+                    if (event.currentTarget.disabled) {
+                        toggleDisableBtn.enable();
+                        console.log('버튼 활성화');
+                    } else {
+                        toggleDisableBtn.disable();
+                        console.log('버튼 비활성화');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

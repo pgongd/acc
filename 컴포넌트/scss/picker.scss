@@ -1,0 +1,22 @@
+.picker {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+  .picker-panel {
+    font-family: inherit;
+    text-align: center;
+
+    .picker-cell {
+      color: #999;
+      font-size: 16px;
+
+      &.picker-selected {
+        font-weight: bold;
+        font-size: 18px;
+        background: #f2f6fb;
+        color: #000;
+        border-radius: 6px;
+      }
+    }
+  }
+}

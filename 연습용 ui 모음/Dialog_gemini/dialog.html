@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 접근성 다이얼로그 예제</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button id="openDialogBtn">약관 보기</button>
+    
+    <div id="termsDialog" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+        <div class="dialog__content">
+            <h2 id="dialogTitle" class="dialog__title">개인정보 수집 및 이용 동의</h2>
+            <p class="dialog__body-text">본 약관에 동의하지 않으시면 서비스 이용이 제한될 수 있습니다.</p>
+            <p>...약관 내용 상세...</p>
+            <button class="dialog__confirm-btn">확인</button>
+            <button class="dialog__close-btn" aria-label="닫기">×</button>
+        </div>
+    </div>
+    
+    <p>...아래에 다른 컨텐츠들이 있습니다. 스크롤을 내려보세요...</p>
+    <div style="height: 1500px; background-color: #f0f0f0;"></div>
+
+    <script src="dialog.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dialogElement = document.getElementById('termsDialog');
+            const openBtn = document.getElementById('openDialogBtn');
+            
+            // 미리 만들어 둔 마크업을 인자로 전달하여 클래스 인스턴스 생성
+            const termsDialog = new Dialog(dialogElement, {
+                openBtn: openBtn
+            });
+        });
+    </script>
+</body>
+</html>

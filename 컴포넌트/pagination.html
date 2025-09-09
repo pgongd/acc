@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .pagination {
+      display: flex;
+      gap: 4px;
+
+      button {
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        background: #fff;
+
+        &[aria-current="page"] {
+          background: var(--color-primary, #0072ce);
+          color: #fff;
+          font-weight: bold;
+        }
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="pagination" role="navigation" aria-label="페이지 이동">
+  <button aria-label=abel"이전 페이지">&lt;</button>
+  <button aria-current="page">1</button>
+  <button>2</button>
+  <button>3</button>
+  <button aria-label="다음 페이지">&gt;</button>
+</nav>
+
+</body>
+</html>

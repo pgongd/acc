@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>휠 데이터피커 예제</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Flatpickr 라이브러리 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .datepicker-wrapper {
+      max-width: 320px;
+      margin: auto;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    /* 휠 스타일 (iOS 비슷하게) */
+    .flatpickr-calendar {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <h1>휠 데이터피커 데모</h1>
+  <div class="datepicker-wrapper">
+    <input id="datepicker" type="text" aria-label="날짜 선택" />
+  </div>
+
+  <script>
+    flatpickr("#datepicker", {
+      dateFormat: "Y-m-d",
+      defaultDate: "today",
+      // 금융권에서 접근성 대응: aria-label 사용
+      ariaDateFormat: "Y년 m월 d일",
+    });
+  </script>
+</body>
+</html>

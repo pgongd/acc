@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pickerjs/dist/picker.css">
+  <script src="https://cdn.jsdelivr.net/npm/pickerjs/dist/picker.min.js"></script>
+
+</head>
+<body>
+
+  <div class="time-picker">
+  <input type="text" id="hourPicker" aria-label="시간 선택" readonly>
+</div>
+
+<script>
+  const input = document.getElementById('hourPicker');
+
+new Picker(input, {
+  format: 'HH시',
+  date: new Date(),
+  headers: true,
+  text: {
+    title: '시간 선택'
+  },
+  increment: {
+    hour: 1
+  }
+});
+
+</script>
+
+  
+</body>
+</html>

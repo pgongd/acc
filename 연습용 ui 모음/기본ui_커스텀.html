@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 접근성 UI 컴포넌트 모음</title>
+    <style>
+        /**
+         * @file UI 컴포넌트 스타일 시트
+         * BEM(Block__Element--Modifier) 방법론을 사용하여 구조화
+         */
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        /* 기본 스타일 */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            padding: 2rem;
+            color: #1f2937;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #111827;
+        }
+
+        .component-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .component-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .component-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .component-block {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+        }
+        
+        .component-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* 아코디언 컴포넌트 */
+        .accordion__item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .accordion__trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 0;
+            text-align: left;
+            font-weight: 500;
+            color: #4b5563;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .accordion__trigger:hover {
+            color: #2563eb;
+        }
+
+        .accordion__trigger:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        .accordion__trigger-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .accordion__trigger[aria-expanded="true"] .accordion__trigger-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion__panel {
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            max-height: 0;
+            visibility: hidden;
+        }
+        
+        .accordion__panel[aria-hidden="false"] {
+            max-height: 200px; /* 적절한 값으로 설정하거나 JS로 동적 계산 */
+            visibility: visible;
+        }
+
+        .accordion__panel-content {
+            padding-bottom: 1rem;
+            color: #6b7280;
+        }
+
+
+        /* 탭 컴포넌트 */
+        .tabs__list {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tabs__trigger {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .tabs__trigger:hover {
+            color: #1f2937;
+        }
+
+        .tabs__trigger--active,
+        .tabs__trigger:focus-visible {
+            color: #2563eb;
+            border-color: #2563eb;
+            outline: none;
+        }
+
+        .tabs__panel {
+            padding-top: 1rem;
+            color: #6b7280;
+        }
+
+        /* 카드 컴포넌트 */
+        .card__group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .card__group {
+                flex-direction: row;
+            }
+        }
+
+        .card {
+            flex: 1;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .card--blue {
+            background-color: #eff6ff;
+        }
+
+        .card--purple {
+            background-color: #f3e8ff;
+        }
+
+        .card__title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card--blue .card__title {
+            color: #1e40af;
+        }
+        
+        .card--purple .card__title {
+            color: #6b21a8;
+        }
+
+        .card__text {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        /* 슬라이더 컴포넌트 */
+        .slider {
+            position: relative;
+        }
+
+        .slider__container {
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .slider__track {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .slider__item {
+            flex-shrink: 0;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .slider__image {
+            width: 100%;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .slider__text {
+            margin-top: 1rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #4b5563;
+        }
+        
+        .slider__button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.75rem;
+            border-radius: 9999px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            color: #4b5563;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .slider__button:hover {
+            background-color: #ffffff;
+        }
+        
+        .slider__button:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        .slider__button--prev {
+            left: 1rem;
+        }
+
+        .slider__button--next {
+            right: 1rem;
+        }
+        
+        .slider__indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 0.5rem;
+        }
+
+        .slider__indicator {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 9999px;
+            background-color: #d1d5db;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .slider__indicator--active {
+            background-color: #2563eb;
+        }
+        
+        /* 커스텀 체크박스/라디오 버튼 */
+        .form-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-control__input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            outline: none;
+        }
+
+        .form-control__input--checkbox {
+            border-radius: 0.375rem;
+        }
+
+        .form-control__input--radio {
+            border-radius: 9999px;
+        }
+
+        .form-control__input:checked {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+        .form-control__input--checkbox:checked::before {
+            content: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .form-control__input--radio:checked::before {
+            content: '';
+            display: block;
+            width: 0.625rem;
+            height: 0.625rem;
+            background-color: #fff;
+            border-radius: 9999px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .form-control__input:focus-visible {
+            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #3b82f6;
+        }
+        
+        .form-control__label {
+            color: #4b5563;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 섹션 제목 -->
+    <h1 class="component-heading">기본 UI 컴포넌트 모음</h1>
+
+    <!-- 컴포넌트 컨테이너 -->
+    <div class="component-container">
+
+        <!-- 아코디언 컴포넌트 -->
+        <div class="component-block">
+            <h2 class="component-title">아코디언</h2>
+            <div data-component="accordion">
+                <!-- 아코디언 아이템 1 -->
+                <div class="accordion__item">
+                    <button type="button" 
+                            class="accordion__trigger"
+                            data-accordion-trigger 
+                            data-accordion-target="#accordion-panel-1" 
+                            aria-expanded="false"
+                            aria-controls="accordion-panel-1">
+                        <span>아코디언 제목 1</span>
+                        <svg class="accordion__trigger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                    <div id="accordion-panel-1" class="accordion__panel" aria-hidden="true" role="region" aria-labelledby="accordion-panel-1">
+                        <div class="accordion__panel-content">
+                            여기에 아코디언 내용이 들어갑니다. 숨겨져 있다가 버튼 클릭 시 보입니다. 이 컴포넌트는 WAI-ARIA 속성을 사용하여 스크린 리더 사용자에게 상태를 명확하게 전달합니다.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 아코디언 아이템 2 -->
+                <div class="accordion__item">
+                    <button type="button" 
+                            class="accordion__trigger"
+                            data-accordion-trigger 
+                            data-accordion-target="#accordion-panel-2" 
+                            aria-expanded="false"
+                            aria-controls="accordion-panel-2">
+                        <span>아코디언 제목 2</span>
+                        <svg class="accordion__trigger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                    <div id="accordion-panel-2" class="accordion__panel" aria-hidden="true" role="region" aria-labelledby="accordion-panel-2">
+                        <div class="accordion__panel-content">
+                            두 번째 아코디언 내용입니다. 이 컴포넌트는 키보드로도 모든 기능을 조작할 수 있도록 설계되었습니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 탭 컴포넌트 -->
+        <div class="component-block">
+            <h2 class="component-title">탭</h2>
+            <div data-component="tabs">
+                <div class="tabs__list" role="tablist" aria-label="탭 메뉴">
+                    <button type="button" class="tabs__trigger"
+                            data-tab-trigger data-tab-target="#tab-panel-1" role="tab" aria-selected="true" aria-controls="tab-panel-1">
+                        탭 1
+                    </button>
+                    <button type="button" class="tabs__trigger"
+                            data-tab-trigger data-tab-target="#tab-panel-2" role="tab" aria-selected="false" aria-controls="tab-panel-2">
+                        탭 2
+                    </button>
+                    <button type="button" class="tabs__trigger"
+                            data-tab-trigger data-tab-target="#tab-panel-3" role="tab" aria-selected="false" aria-controls="tab-panel-3">
+                        탭 3
+                    </button>
+                </div>
+                <div class="tabs__panels">
+                    <div id="tab-panel-1" class="tabs__panel" role="tabpanel" tabindex="0" aria-hidden="false">
+                        <p>탭 1의 내용입니다. 첫 번째 탭을 선택하면 보입니다.</p>
+                    </div>
+                    <div id="tab-panel-2" class="tabs__panel" role="tabpanel" tabindex="-1" aria-hidden="true" style="display: none;">
+                        <p>탭 2의 내용입니다. 다른 탭을 선택하면 숨겨집니다.</p>
+                    </div>
+                    <div id="tab-panel-3" class="tabs__panel" role="tabpanel" tabindex="-1" aria-hidden="true" style="display: none;">
+                        <p>탭 3의 내용입니다. 탭 간 전환은 부드럽게 이루어집니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 컴포넌트 -->
+        <div class="component-block">
+            <h2 class="component-title">카드</h2>
+            <div class="card__group">
+                <div class="card card--blue">
+                    <h3 class="card__title">카드 제목</h3>
+                    <p class="card__text">카드는 정보를 시각적으로 그룹화하는 데 사용되는 유연한 컨테이너입니다.</p>
+                </div>
+                <div class="card card--purple">
+                    <h3 class="card__title">카드 제목</h3>
+                    <p class="card__text">이 카드는 BEM과 순수 CSS로만 스타일링되었습니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 슬라이더 컴포넌트 -->
+        <div class="component-block">
+            <h2 class="component-title">슬라이더 (Swiper)</h2>
+            <div data-component="slider" class="slider">
+                <div class="slider__container">
+                    <div class="slider__track">
+                        <div class="slider__item">
+                            <img src="https://placehold.co/600x400/FF0000/FFFFFF?text=Slide+1" alt="슬라이드 1" class="slider__image">
+                            <p class="slider__text">슬라이드 1</p>
+                        </div>
+                        <div class="slider__item">
+                            <img src="https://placehold.co/600x400/00FF00/000000?text=Slide+2" alt="슬라이드 2" class="slider__image">
+                            <p class="slider__text">슬라이드 2</p>
+                        </div>
+                        <div class="slider__item">
+                            <img src="https://placehold.co/600x400/0000FF/FFFFFF?text=Slide+3" alt="슬라이드 3" class="slider__image">
+                            <p class="slider__text">슬라이드 3</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 네비게이션 버튼 -->
+                <button type="button" data-slider-prev class="slider__button slider__button--prev">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" data-slider-next class="slider__button slider__button--next">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+                <!-- 인디케이터 -->
+                <div class="slider__indicators">
+                    <button data-slider-indicator="0" class="slider__indicator"></button>
+                    <button data-slider-indicator="1" class="slider__indicator"></button>
+                    <button data-slider-indicator="2" class="slider__indicator"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 체크박스 및 라디오 버튼 컴포넌트 -->
+        <div class="component-block">
+            <h2 class="component-title">체크박스 & 라디오 버튼</h2>
+            <div class="form-group">
+                <!-- 체크박스 -->
+                <h3 class="component-subtitle">체크박스</h3>
+                <div class="form-control">
+                    <input type="checkbox" id="checkbox1" name="option1" class="form-control__input form-control__input--checkbox">
+                    <label for="checkbox1" class="form-control__label">옵션 1 선택</label>
+                </div>
+                <div class="form-control">
+                    <input type="checkbox" id="checkbox2" name="option2" class="form-control__input form-control__input--checkbox">
+                    <label for="checkbox2" class="form-control__label">옵션 2 선택</label>
+                </div>
+                
+                <!-- 라디오 버튼 -->
+                <h3 class="component-subtitle" style="margin-top: 1rem;">라디오 버튼</h3>
+                <div class="form-group" role="radiogroup" aria-labelledby="radio-group-label">
+                    <div id="radio-group-label" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">라디오 버튼 그룹</div>
+                    <div class="form-control">
+                        <input type="radio" id="radio1" name="radio-group" value="1" class="form-control__input form-control__input--radio">
+                        <label for="radio1" class="form-control__label">라디오 1</label>
+                    </div>
+                    <div class="form-control">
+                        <input type="radio" id="radio2" name="radio-group" value="2" class="form-control__input form-control__input--radio">
+                        <label for="radio2" class="form-control__label">라디오 2</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- // 컴포넌트 컨테이너 -->
+
+    <script>
+        /**
+         * @fileoverview UI 컴포넌트들의 동적 로직을 처리하는 스크립트.
+         * 모든 컴포넌트는 data-* 속성을 기반으로 동작하며,
+         * 재사용성과 확장성을 고려하여 설계되었습니다.
+         * 웹 접근성(ARIA 속성, 키보드 조작)을 준수합니다.
+         */
+
+          /**
+             * 아코디언 컴포넌트 초기화 및 로직
+             * @param {HTMLElement} accordion - 아코디언 컨테이너 요소
+             */
+            const initializeAccordion = (accordion) => {
+                const triggers = accordion.querySelectorAll('[data-accordion-trigger]');
+
+                triggers.forEach(trigger => {
+                    const targetId = trigger.dataset.accordionTarget;
+                    const panel = document.querySelector(targetId);
+
+                    if (!panel) return;
+
+                    // Update the initial state
+                    const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+                    trigger.setAttribute('aria-expanded', isExpanded);
+                    panel.setAttribute('aria-hidden', !isExpanded);
+                    if (isExpanded) {
+                        panel.style.maxHeight = `${panel.scrollHeight}px`;
+                    } else {
+                        panel.style.maxHeight = '0px';
+                    }
+
+                    // Click event listener
+                    trigger.addEventListener('click', () => {
+                        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+                        trigger.setAttribute('aria-expanded', !isExpanded);
+                        panel.setAttribute('aria-hidden', isExpanded);
+
+                        if (!isExpanded) {
+                            panel.style.maxHeight = `${panel.scrollHeight}px`;
+                            trigger.querySelector('svg').style.transform = 'rotate(45deg)';
+                        } else {
+                            panel.style.maxHeight = '0px';
+                            trigger.querySelector('svg').style.transform = 'rotate(0deg)';
+                        }
+                    });
+                });
+            };
+
+            /**
+             * 탭 컴포넌트 초기화 및 로직
+             * @param {HTMLElement} tabsComponent - 탭 컴포넌트 컨테이너 요소
+             */
+            const initializeTabs = (tabsComponent) => {
+                const tabTriggers = tabsComponent.querySelectorAll('[data-tab-trigger]');
+                const tabPanels = tabsComponent.querySelectorAll('.tabs__panel');
+
+                tabTriggers.forEach(trigger => {
+                    // Set the first tab to be active initially
+                    if (trigger.getAttribute('aria-selected') === 'true') {
+                        trigger.classList.add('tabs__trigger--active');
+                    }
+                    
+                    trigger.addEventListener('click', (e) => {
+                        const targetId = e.currentTarget.dataset.tabTarget;
+                        const targetPanel = document.querySelector(targetId);
+
+                        if (!targetPanel) return;
+
+                        // Deactivate all tabs
+                        tabTriggers.forEach(btn => {
+                            btn.classList.remove('tabs__trigger--active');
+                            btn.setAttribute('aria-selected', 'false');
+                        });
+                        tabPanels.forEach(panel => {
+                            panel.style.display = 'none';
+                            panel.setAttribute('aria-hidden', 'true');
+                            panel.setAttribute('tabindex', '-1');
+                        });
+
+                        // Activate the clicked tab
+                        e.currentTarget.classList.add('tabs__trigger--active');
+                        e.currentTarget.setAttribute('aria-selected', 'true');
+                        targetPanel.style.display = 'block';
+                        targetPanel.setAttribute('aria-hidden', 'false');
+                        targetPanel.setAttribute('tabindex', '0');
+                        targetPanel.focus();
+                    });
+                });
+            };
+
+            /**
+             * 슬라이더 컴포넌트 초기화 및 로직
+             * @param {HTMLElement} slider - 슬라이더 컨테이너 요소
+             */
+            const initializeSlider = (slider) => {
+                const track = slider.querySelector('.slider__track');
+                const slides = Array.from(slider.querySelectorAll('.slider__item'));
+                const prevBtn = slider.querySelector('[data-slider-prev]');
+                const nextBtn = slider.querySelector('[data-slider-next]');
+                const indicators = slider.querySelectorAll('[data-slider-indicator]');
+                let currentIndex = 0;
+
+                const updateSlider = () => {
+                    const itemWidth = slides[0].offsetWidth;
+                    track.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+
+                    indicators.forEach((indicator, index) => {
+                        if (index === currentIndex) {
+                            indicator.classList.add('slider__indicator--active');
+                        } else {
+                            indicator.classList.remove('slider__indicator--active');
+                        }
+                    });
+                };
+
+                // Set initial state
+                updateSlider();
+
+                // Previous/Next button events
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    updateSlider();
+                });
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateSlider();
+                });
+
+                // Indicator click events
+                indicators.forEach(indicator => {
+                    indicator.addEventListener('click', (e) => {
+                        currentIndex = parseInt(e.target.dataset.sliderIndicator, 10);
+                        updateSlider();
+                    });
+                });
+
+                // Re-align slider on window resize
+                window.addEventListener('resize', updateSlider);
+            };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize all components
+            document.querySelectorAll('[data-component="accordion"]').forEach(initializeAccordion);
+            document.querySelectorAll('[data-component="tabs"]').forEach(initializeTabs);
+            document.querySelectorAll('[data-component="slider"]').forEach(initializeSlider);
+        });
+    </script>
+
+</body>
+</html>

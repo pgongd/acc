@@ -1,0 +1,97 @@
+@use "sass:color";
+
+// Variables for light mode
+$date-bg-light: #fff;
+// $date-header-bg-light: color.lighten($date-bg-light, 5%);
+$date-text-light: #222;
+
+// Variables for dark mode
+$date-bg-dark: #1a1a1a;
+// $date-header-bg-dark: color.darken($date-bg-dark, 5%);
+$date-text-dark: #ddd;
+
+// Highlight and border color
+$date-highlight: #0072ce;
+$date-border: #eee;
+
+.datepicker {
+  width: 100%;
+  max-width: 320px;
+  background: $date-bg-light;
+  color: $date-text-light;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: sans-serif;
+  border: 1px solid $date-border;
+
+  // Use a data-theme attribute for toggling dark mode
+  &[data-theme="dark"] {
+    background: $date-bg-dark;
+    color: $date-text-dark;
+    // border-color: color.darken($date-bg-dark, 10%);
+
+    .datepicker-header {
+      // background: $date-header-bg-dark;
+    }
+    
+    .highlight {
+      border-top-color: $date-highlight;
+      border-bottom-color: $date-highlight;
+    }
+  }
+
+  .datepicker-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    font-size: 16px;
+    // background: $date-header-bg-light;
+
+    button {
+      background: none;
+      border: none;
+      color: $date-highlight;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+
+  .datepicker-body {
+    display: flex;
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .wheel {
+    flex: 1;
+    text-align: center;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    div {
+      height: 40px;
+      line-height: 40px;
+      scroll-snap-align: center;
+      font-size: 16px;
+    }
+  }
+
+  .highlight {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 40px;
+    margin-top: -20px;
+    border-top: 1px solid $date-highlight;
+    border-bottom: 1px solid $date-highlight;
+    pointer-events: none;
+  }
+}

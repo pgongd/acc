@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="datepicker" role="dialog" aria-modal="true" aria-label="날짜 선택">
+  <div class="datepicker-header">
+    <button type="button" class="btn-cancel">취소</button>
+    <div class="datepicker-title">날짜 선택</div>
+    <button type="button" class="btn-ok">확인</button>
+  </div>
+
+  <div class="datepicker-body">
+    <div class="wheel year" role="listbox" aria-label="연도 선택"></div>
+    <div class="wheel month" role="listbox" aria-label="월 선택"></div>
+    <div class="wheel day" role="listbox" aria-label="일 선택"></div>
+    <div class="highlight"></div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const years = document.querySelector(".wheel.year");
+  const months = document.querySelector(".wheel.month");
+  const days = document.querySelector(".wheel.day");
+
+  // 연도 생성
+  for (let y = 2000; y <= 2030; y++) {
+    const div = document.createElement("div");
+    div.textContent = y + "년";
+    div.setAttribute("role", "option");
+    years.appendChild(div);
+  }
+
+  // 월 생성
+  for (let m = 1; m <= 12; m++) {
+    const div = document.createElement("div");
+    div.textContent = m + "월";
+    div.setAttribute("role", "option");
+    months.appendChild(div);
+  }
+
+  // 일 생성 (기본 31일)
+  for (let d = 1; d <= 31; d++) {
+    const div = document.createElement("div");
+    div.textContent = d + "일";
+    div.setAttribute("role", "option");
+    days.appendChild(div);
+  }
+
+  // 스크롤 중앙 정렬 보정
+  function snapToCenter(wheel) {
+    const itemHeight = 40;
+    const scrollTop = wheel.scrollTop;
+    const index = Math.round(scrollTop / itemHeight);
+    wheel.scrollTo({
+      top: index * itemHeight,
+      behavior: "smooth",
+    });
+
+    // aria-selected 관리
+    wheel.querySelectorAll("[role=option]").forEach((opt, i) => {
+      opt.setAttribute("aria-selected", i === index ? "true" : "false");
+    });
+  }
+
+  document.querySelectorAll(".wheel").forEach((wheel) => {
+    wheel.addEventListener("scroll", () => {
+      clearTimeout(wheel._scrollTimeout);
+      wheel._scrollTimeout = setTimeout(() => snapToCenter(wheel), 100);
+    });
+  });
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input[type="range"] {
+  width: 200px;
+  appearance: none;
+  height: 4px;
+  background: #ddd;
+  border-radius: 4px;
+  outline: none;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-primary, #0072ce);
+    cursor: pointer;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <label for="volume">볼륨 조절</label>
+<input type="range" id="volume" min="0" max="100" value="50" />
+
+</body>
+</html>
