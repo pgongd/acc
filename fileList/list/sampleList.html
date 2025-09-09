@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">MY PAGE (담당자)</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+	
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<script type="text/javascript">
+						viewtitle('스크립트');
+						// viewtitle02('3depth 타이틀');
+						viewlist02('임시 테스트 화면1', '/publish/smr/guide/test/mokup01.html', '2023-07-03', '', '서현호',  '');
+						viewlist02('임시 테스트 화면2', '/publish/smr/guide/test/mokup03.html', '2023-07-03', '', '서현호',  '');
+						viewlist02('리스트 순서변경 테스트 화면', '/publish/smr/guide/test/reorder.html', '2023-07-27', '', '서현호',  '');
+						viewlist02('바텀시트샘플', '/publish/smr/guide/test/bottomsheet.html', '2023-07-27', '', '서현호',  '');
+						viewlist02('하단고정컨텐츠', '/publish/smr/guide/test/bottomfixecont.html', '2023-08-03', '', '서현호',  '');
+						viewlist02('actionsheet 높이 full 고정', '/publish/smr/guide/test/actionSheetFullHeight.html', '2023-08-21', '', '서현호',  '');
+						viewlist02('팝업 닫기 버튼 텍스트 타입', '/publish/smr/guide/test/layerCloseType02.html', '2023-08-22', '', '서현호',  '');
+						viewlist02('폭죽 인터렉션', '/publish/smr/guide/test/particule.html', '2023-10-04', '', '서현호',  '');
+						viewlist02('폭죽/박수', '/publish/smr/guide/test/particule02.html', '2023-10-30', '', '서현호',  '');
+						viewlist02('이체 샘플페이지[일반1]', '/publish/smr/guide/test/trans_sample.html', '-', '', '서현호',  '');
+						viewlist02('이체 샘플페이지[일반2]', '/publish/smr/guide/test/trans_sample02.html', '-', '', '서현호',  '');
+						viewlist02('이체 샘플페이지[큰글씨1]', '/publish/smr/guide/test/trans_sample03.html', '-', '', '서현호',  '');
+						viewlist02('이체 샘플페이지[큰글씨2]', '/publish/smr/guide/test/trans_sample04.html', '-', '', '서현호',  '');
+						viewlist02('이체 샘플페이지[큰글씨3]', '/publish/smr/guide/test/trans_sample05.html', '-', '', '서현호',  '');
+						viewlist02('달력 - 거래내역 조회', '/publish/smr/guide/test/calendar.html', '-', '', '서현호',  '');
+						viewlist02('달력 - 예약이체(주말/당일 선택X)', '/publish/smr/guide/test/calendar02.html', '-', '', '서현호',  '');
+						viewlist02('달력 - 임시한도증액(주말 선택X)', '/publish/smr/guide/test/calendar03.html', '-', '', '서현호',  '');
+					</script>
+	
+				</tbody>
+	
+			</table>
+		</div>
+	</div>
+	
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+	
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+			</div>
+	
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+</body>
+</html>

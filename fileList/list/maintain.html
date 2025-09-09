@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">퍼블만수정</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+	
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<script type="text/javascript">
+viewtitle('뱅킹');
+viewtitle02('예금');
+viewlist02('분할해지> 목록', '/publish/smr/view/maintain/SBPDPO040LSTV01M.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPDPO040LSTV01M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('분할해지> 인출금액 입력(예금)', '/publish/smr/view/maintain/SBPDPO040TRSV02M.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPDPO040TRSV02M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('분할해지> 입금계좌 선택(공통)', '/publish/smr/view/maintain/SBPDPO040TRSV03M.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPDPO040TRSV03M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('분할해지> 인출회차 선택(적금)', '/publish/smr/view/maintain/SBPDPO040TRSV04M.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPDPO040TRSV04M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('분할해지> 완료', '/publish/smr/view/maintain/SBPDPO040FINV05M.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPDPO040FINV05M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('계좌전환> 전환상품 선택', '/publish/smr/view/maintain/SBPDPO060CVNV01M.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPDPO060CVNV01M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('계좌전환> 약관/상품설명서 확인', '/publish/smr/view/maintain/SBPDPO060CVNV02M.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPDPO060CVNV02M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('계좌전환> 완료', '/publish/smr/view/maintain/SBPDPO060FINV03M.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPDPO060FINV03M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('주택청약종합저축 소득공제대상 등록/해제', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+viewlist02('주택청약종합저축 소득공제대상 등록/해제', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+viewlist02('주택청약종합저축 소득공제대상 등록/해제', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+viewlist02('주택청약종합저축 소득공제대상 등록/해제', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+
+viewtitle02('대출');
+viewlist02('대출상환/이자납입>목록', '/publish/smr/view/maintain/SBPLON020LSTV01M.html', '-', 'X', '', '<a href="/publish/sbp/lon/SBPLON020LSTV01M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('대출상환/이자납입>상세조회', '/publish/smr/view/maintain/SBPLON020DETV02M.html', '-', 'X', '', '<a href="/publish/sbp/lon/SBPLON020DETV02M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('대출상환/이자납입>상세조회>Step1_정보입력', '/publish/smr/view/maintain/SBPLON020TRSV10M.html', '-', 'X', '', '<a href="/publish/sbp/lon/SBPLON020TRSV10M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('대출상환/이자납입>상세조회>Step1_정보입력>이자납부확인증', '/publish/smr/view/maintain/SBPLON020TRSV11P.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPLON020TRSV11P.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('대출상환/이자납입>상세조회>Step2_정보확인', '/publish/smr/view/maintain/SBPLON020TRSV20M.html', '-', 'X', '', '<a href="/publish/sbp/dpo/SBPLON020TRSV20M.html" target="_blank" class="link_origin">원본</a>');
+viewlist02('대출상환/이자납입>상세조회>Step2_정보확인>이자상세내역조회', '/publish/smr/view/maintain/SBPLON020INQV21P.html', '-', 'X', '', '');
+viewlist02('대출상환/이자납입>상세조회>Step3_실행완료', '/publish/smr/view/maintain/SBPLON020FINV30M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>목록', '/publish/smr/view/maintain/SBPLON060LSTV01M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>상세조회', '/publish/smr/view/maintain/SBPLON060INQV02M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>감액>Step1_정보입력', '/publish/smr/view/maintain/SBPLON061TRSV10M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>감액>Step1_정보입력>내역조회bottom', '/publish/smr/view/maintain/SBPLON061TRSV11P.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>Step2_감액완료', '/publish/smr/view/maintain/SBPLON061FINV20M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>해지>Step1_정보확인', '/publish/smr/view/maintain/SBPLON062TRSV10M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>해지>Step2_해지완료', '/publish/smr/view/maintain/SBPLON062FINV20M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step1_약관동의', '/publish/smr/view/maintain/SBPLON063TRSV10M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step2_정보입력', '/publish/smr/view/maintain/SBPLON063TRSV20M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step3_직장정보>급여소득자,기타소득자,공무원,교직원', '/publish/smr/view/maintain/SBPLON063TRSV30M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step3_직장정보>개인사업자', '/publish/smr/view/maintain/SBPLON063TRSV31M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step3_직장정보>신고소득없음', '/publish/smr/view/maintain/SBPLON063TRSV32M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step3_직장정보>한도증액 심사안내', '/publish/smr/view/maintain/SBPLON063TRSV35P.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step4_한도증액', '/publish/smr/view/maintain/SBPLON063TRSV40M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step4_한도증액>한도증액 필수사항 안내', '/publish/smr/view/maintain/SBPLON063TRSV41P.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step5_정보확인', '/publish/smr/view/maintain/SBPLON063TRSV50M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step6_서류작성', '/publish/smr/view/maintain/SBPLON063TRSV60M.html', '-', 'X', '', '');
+viewlist02('대출관리>한도변경/해지>증액>Step7_연장완료', '/publish/smr/view/maintain/SBPLON063FINV70M.html', '-', 'X', '', '');
+viewlist02('대출관리>이자납부계좌변경>step1_대출계좌선택', '/publish/smr/view/maintain/SBPLON064LSTV10M.html', '-', 'X', '', '');
+viewlist02('대출관리>이자납부계좌변경>step2_변경계좌선택', '/publish/smr/view/maintain/SBPLON064TRSV20M.html', '-', 'X', '', '');
+viewlist02('대출관리>이자납부계좌변경>step2_변경계좌선택>변경계좌선택 팝업', '/publish/smr/view/maintain/SBPLON064TRSV20M_1.html', '-', 'X', '', '');
+viewlist02('대출관리>이자납부계좌변경>step3_변경완료', '/publish/smr/view/maintain/SBPLON064FINV30M.html', '-', 'X', '', '');
+viewlist02('금리인하요구권>안내', '/publish/smr/view/maintain/SBPLON070TRSV01M.html', '-', 'X', '', '');
+viewlist02('금리인하요구권>후견인제도안내', '/publish/smr/view/maintain/SBPLON070GUDV02M.html', '-', 'X', '', '');
+viewlist02('금리인하요구권>신청', '/publish/smr/view/maintain/SBPLON071LSTV01M.html', '-', 'X', '', '');
+viewlist02('금리인하요구권>신청>Step1_약관동의', '/publish/smr/view/maintain/SBPLON071TRSV10M.html', '-', 'X', '', '');
+viewlist02('금리인하요구권>신청>Step2_정보입력>급여소득자,기타소득자,공무원,교직원', '/publish/smr/view/maintain/SBPLON071TRSV11M.html', '-', 'X', '', '');
+viewlist02('금리인하요구권>신청>Step2_직장정보>급여소득자,기타소득자,공무원,교직원', '/publish/smr/view/maintain/SBPLON071TRSV20M.html', '-', 'X', '', '');
+viewlist02('금리인하요구권>신청>금리인하요구권심사안내', '/publish/smr/view/maintain/SBPLON071TRSV22P.html', '-', 'X', '', '');
+viewlist02('금리인하요구권>신청>Step3_정보확인', '/publish/smr/view/maintain/SBPLON071TRSV30M.html', '-', 'X', '', '');
+viewlist02('금리인하요구권>신청>Step4_인하완료', '/publish/smr/view/maintain/SBPLON071TRSV40M.html', '-', 'X', '', '');
+
+viewtitle02('펀드');
+viewlist02('추가입금/취소>추가입금>목록', '/publish/smr/view/maintain/SBPFND030LSTV01M.html', '-', 'X', '', '');
+viewlist02('추가입금/취소>추가입금>정보입력', '/publish/smr/view/maintain/SBPFND030DETV02M.html', '-', 'X', '', '');
+viewlist02('추가입금/취소>추가입금>입력확인', '/publish/smr/view/maintain/SBPFND030TRSV03M.html', '-', 'X', '', '');
+viewlist02('추가입금/취소>추가입금>추가입금예약완료', '/publish/smr/view/maintain/SBPFND030TRSV04M.html', '-', 'X', '', '');
+viewlist02('추가입금/취소>추가입금조회/취소>목록', '/publish/smr/view/maintain/SBPFND030LSTV05M.html', '-', 'X', '', '');
+viewlist02('추가입금/취소>추가입금조회/취소>정보확인', '/publish/smr/view/maintain/SBPFND030TRSV06M.html', '-', 'X', '', '');
+viewlist02('추가입금/취소>추가입금조회/취소>추가입금취소완료', '/publish/smr/view/maintain/SBPFND030FINV07M.html', '-', 'X', '', '');
+viewlist02('환매(해지)예약/취소>환매(해지)예약>환매(해지)예약', '/publish/smr/view/maintain/SBPFND050LSTV01M.html', '-', 'X', '', '');
+viewlist02('환매(해지)예약/취소>환매(해지)예약>환매(해지)예약>상세정보', '/publish/smr/view/maintain/SBPFND050DETV02M.html', '-', 'X', '', '');
+viewlist02('환매(해지)예약/취소>환매(해지)예약>정보입력', '/publish/smr/view/maintain/SBPFND050TRSV03M.html', '-', 'X', '', '');
+viewlist02('환매(해지)예약/취소>환매(해지)예약>입력확인', '/publish/smr/view/maintain/SBPFND050TRSV04M.html', '-', 'X', '', '');
+viewlist02('환매(해지)예약/취소>환매(해지)예약>환매(해지)예약완료', '/publish/smr/view/maintain/SBPFND050FINV05M.html', '-', 'X', '', '');
+viewlist02('환매(해지)예약/취소>환매(해지)예약 조회/취소>목록', '/publish/smr/view/maintain/SBPFND050LSTV06M.html', '-', 'X', '', '');
+viewlist02('환매(해지)예약/취소>환매(해지)예약 조회/취소>정보확인', '/publish/smr/view/maintain/SBPFND050TRSV07M.html', '-', 'X', '', '');
+viewlist02('환매(해지)예약/취소>환매(해지)예약 조회/취소>환매(해지)예약취소완료', '/publish/smr/view/maintain/SBPFND050FINV08M.html', '-', 'X', '', '');
+viewlist02('개인 MMF출금>목록', '/publish/smr/view/maintain/SBPFND060LSTV01M.html', '-', 'X', '', '');
+viewlist02('개인 MMF출금>상세정보', '/publish/smr/view/maintain/SBPFND060DETV02M.html', '-', 'X', '', '');
+viewlist02('개인 MMF출금>정보입력', '/publish/smr/view/maintain/SBPFND060TRSV03M.html', '-', 'X', '', '');
+viewlist02('개인 MMF출금>정보확인', '/publish/smr/view/maintain/SBPFND060TRSV04M.html', '-', 'X', '', '');
+viewlist02('개인 MMF출금>신청완료', '/publish/smr/view/maintain/SBPFND060FINV05M.html', '-', 'X', '', '');
+viewlist02('기준가 조회', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+viewlist02('기준가 조회', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+
+viewtitle02('외환');
+viewlist02('국내송금>당행송금>Step1_정보입력 (원화계좌->외화계좌로 송금/외화계좌->원화계좌로 송금)', '/publish/smr/view/maintain/SBPFEX071TRSV10M.html', '-', 'X', '', '');
+viewlist02('국내송금>당행송금>Step1_정보입력 (외화계좌->외화계좌로 송금 / 계좌번호)', '/publish/smr/view/maintain/SBPFEX071TRSV11M.html', '-', 'X', '', '');
+viewlist02('국내송금>당행송금>Step1_정보입력 (외화계좌->외화계좌로 송금 / 직접입력)', '/publish/smr/view/maintain/SBPFEX071TRSV12M.html', '-', 'X', '', '');
+viewlist02('국내송금>당행송금>Step1_정보입력 (외화계좌->외화계좌로 송금 / 직접입력)>송금내역', '/publish/smr/view/maintain/SBPFEX071INQV13P.html', '-', 'X', '', '');
+viewlist02('국내송금>당행송금>Step2_송금완료', '/publish/smr/view/maintain/SBPFEX071FINV20M.html', '-', 'X', '', '');
+
+viewtitle02('퇴직연금');
+viewlist02('퇴직연금조회>계좌조회>계좌목록', '/publish/smr/view/maintain/SBPRTP010LSTV01M.html', '-', 'X', '', '');
+viewlist02('퇴직연금조회>계좌조회>계좌상세', '/publish/smr/view/maintain/SBPRTP010DETV02M.html', '-', 'X', '', '');
+viewlist02('퇴직연금조회>계좌조회>거래내역조회>매매내역', '/publish/smr/view/maintain/SBPRTP020DETV01M.html', '-', 'X', '', '');
+viewlist02('퇴직연금조회>계좌조회>거래내역조회>매매내역상세', '/publish/smr/view/maintain/SBPRTP020DETV02P.html', '-', 'X', '', '');
+viewlist02('퇴직연금조회>계좌조회>거래내역조회>입금내역', '/publish/smr/view/maintain/SBPRTP020DETV03M.html', '-', 'X', '', '');
+viewlist02('퇴직연금조회>계좌조회>운용현황 및 수익률조회', '/publish/smr/view/maintain/SBPRTP030INQV01M.html', '-', 'X', '', '');
+viewlist02('투자비율변경 ', '/publish/smr/view/maintain/SBPRTP040TRSV01M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step1_기업부담금', '/publish/smr/view/maintain/SBPRTP040TRSV10M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step1_기업부담금', '/publish/smr/view/maintain/SBPRTP040TRSV10M_02.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step1_개인부담금', '/publish/smr/view/maintain/SBPRTP040TRSV11M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step1_개인부담금 한도변경', '/publish/smr/view/maintain/SBPRTP040TRSV11M2_new.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step1_개인부담금 한도변경2', '/publish/smr/view/maintain/SBPRTP040TRSV11M2_new02.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step1_개인부담금 한도변경3', '/publish/smr/view/maintain/SBPRTP040TRSV11M2_new03.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step1_개인부담금 한도변경4', '/publish/smr/view/maintain/SBPRTP040TRSV11M2_new04.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step1_개인부담금 한도변경4>상품추가', '/publish/smr/view/maintain/SBPRTP040TRSV12M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step2_변경확인', '/publish/smr/view/maintain/SBPRTP040TRSV20M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step2_변경확인>투자성향분석', '/publish/smr/view/maintain/SBPRTP040TRSV21M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step2_변경확인>투자성향분석결과', '/publish/smr/view/maintain/SBPRTP040TRSV22M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step2_변경확인>절차거부확인', '/publish/smr/view/maintain/SBPRTP040TRSV23M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step2_변경확인>위험등급초과가입확인', '/publish/smr/view/maintain/SBPRTP040TRSV24M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 등록/변경>Step3_완료', '/publish/smr/view/maintain/SBPRTP040FINV30M.html', '-', 'X', '', '');
+viewlist02('투자비율변경>매수예정상품 변경이력 조회', '/publish/smr/view/maintain/SBPRTP041INQV01M.html', '-', 'X', '', '');
+
+viewtitle02('보험');
+viewlist02('보험계약조회>목록', '/publish/smr/view/maintain/SBPINS010LSTV01M.html', '-', 'X', '', '');
+viewlist02('보험계약조회>입금내역조회', '/publish/smr/view/maintain/SBPINS010INQV02M.html', '-', 'X', '', '');
+viewlist02('보험계약조회>입금내역조회>상세거래내역', '/publish/smr/view/maintain/SBPINS010DETV03M.html', '-', 'X', '', '');
+viewlist02('보험계약조회>계좌관리>생명보험', '/publish/smr/view/maintain/SBPINS010LSTV04M.html', '-', 'X', '', '');
+viewlist02('보험계약조회>계좌관리>생명보험>보험계약상세', '/publish/smr/view/maintain/SBPINS010DETV05P.html', '-', 'X', '', '');
+viewlist02('보험계약조회>계좌관리>손해보험>보험계약상세', '/publish/smr/view/maintain/SBPINS010DETV07P.html', '-', 'X', '', '');
+
+viewtitle02('공과금');
+viewlist02('지로/생활요금>자동이체신청>신청내역', '/publish/smr/view/maintain/SBPPBC110LSTV01M.html', '-', 'X', '', '');
+viewlist02('지로/생활요금>자동이체신청>신청정보조회', '/publish/smr/view/maintain/SBPPBC110INQV02M.html', '-', 'X', '', '');
+viewlist02('지로/생활요금>자동이체신청>해지정보확인 bottom', '/publish/smr/view/maintain/SBPPBC110DETV03P.html', '-', 'X', '', '');
+viewlist02('지로/생활요금>자동이체신청>해지완료', '/publish/smr/view/maintain/SBPPBC110FINV04M.html', '-', 'X', '', '');
+viewlist02('지로/생활요금>자동이체신청>신청정보입력', '/publish/smr/view/maintain/SBPPBC110PMTV05M.html', '-', 'X', '', '');
+viewlist02('지로/생활요금>자동이체신청>신청정보확인 bottom', '/publish/smr/view/maintain/SBPPBC110PMTV06P.html', '-', 'X', '', '');
+viewlist02('지로/생활요금>자동이체신청>신청완료', '/publish/smr/view/maintain/SBPPBC110FINV07M.html', '-', 'X', '', '');
+
+viewtitle02('계좌관리');
+viewlist02('평생계좌관리>계좌목록', '/publish/smr/view/maintain/SBPAMA040LSTV01M.html', '-', 'X', '', '');
+viewlist02('평생계좌관리>등록/변경', '/publish/smr/view/maintain/SBPAMA040TRSV02M.html', '-', 'X', '', '');
+viewlist02('평생계좌관리>완료>등록', '/publish/smr/view/maintain/SBPAMA040FINV03M.html', '-', 'X', '', '');
+viewlist02('평생계좌관리>완료>변경', '/publish/smr/view/maintain/SBPAMA040FINV05M.html', '-', 'X', '', '');
+viewlist02('평생계좌관리>완료>해제', '/publish/smr/view/maintain/SBPAMA040FINV04M.html', '-', 'X', '', '');
+viewlist02('보안계좌관리', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+viewlist02('보안계좌관리', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+viewlist02('보안계좌관리', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+viewlist02('보안계좌관리', '/publish/smr/view/maintain/?.html', '-', 'X', '', '');
+viewlist02('휴면계좌>계좌목록', '/publish/smr/view/maintain/SBPAMA060LSTV01M.html', '-', 'X', '', '');
+viewlist02('휴면계좌>환급정보 확인', '/publish/smr/view/maintain/SBPAMA060TRSV02M.html', '-', 'X', '', '');
+viewlist02('휴면계좌>입금계좌 선택', '/publish/smr/view/maintain/SBPAMA060TRSV03M.html', '-', 'X', '', '');
+viewlist02('휴면계좌>완료', '/publish/smr/view/maintain/SBPAMA060FINV04M.html', '-', 'X', '', '');
+viewlist02('급여이체일관리>계좌목록', '/publish/smr/view/maintain/SBPAMA080LSTV01M.html', '-', 'X', '', '');
+viewlist02('급여이체일관리>정보입력', '/publish/smr/view/maintain/SBPAMA080TRSV02M.html', '-', 'X', '', '');
+viewlist02('계좌비밀번호변경>계좌선택', '/publish/smr/view/maintain/SBPAMA090LSTV01M.html', '-', 'X', '', '');
+viewlist02('계좌비밀번호변경>설정완료', '/publish/smr/view/maintain/SBPAMA090FINV03M.html', '-', 'X', '', '');
+viewlist02('계좌비밀번호오류해제>계좌목록', '/publish/smr/view/maintain/SBPAMA100LSTV01M.html', '-', 'X', '', '');
+viewlist02('계좌비밀번호오류해제>초기화완료', '/publish/smr/view/maintain/SBPAMA100FINV04M.html', '-', 'X', '', '');
+
+
+viewtitle('고객센터');
+viewtitle02('고객상담');
+viewlist02('이메일상담>상담신청', '/publish/smr/view/maintain/SBPCSC030IPTV01M.html', '-', 'X', '', '');
+viewlist02('이메일상담>신청완료', '/publish/smr/view/maintain/SBPCSC030FINV03M.html', '-', 'X', '', '');
+viewlist02('이메일상담>상담내역', '/publish/smr/view/maintain/SBPCSC030DEDV02M.html', '-', 'X', '', '');
+
+viewtitle02('사고신고/수표조회');
+viewlist02('사고신고>사고신고', '/publish/smr/view/maintain/SBPCSC060INQV05M.html', '-', 'X', '', '');
+viewlist02('사고신고>통장사고신고', '/publish/smr/view/maintain/SBPCSC060IPTV01M.html', '-', 'X', '', '');
+viewlist02('사고신고>카드사고신고', '/publish/smr/view/maintain/SBPCSC060IPTV02M.html', '-', 'X', '', '');
+viewlist02('사고신고>현금카드일괄신고', '/publish/smr/view/maintain/SBPCSC060INQV06M.html', '-', 'X', '', '');
+viewlist02('사고신고>보안매체사고신고>OTP', '/publish/smr/view/maintain/SBPCSC060IPTV03M.html', '-', 'X', '', '');
+viewlist02('사고신고>보안매체사고신고>보안카드', '/publish/smr/view/maintain/SBPCSC060IPTV03M.html', '-', 'X', '', '');
+viewlist02('사고신고>보안매체사고신고>디지털 OTP', '/publish/smr/view/maintain/SBPCSC060IPTV03M.html', '-', 'X', '', '');
+viewlist02('사고신고>비상연락처 등록 팝업', '/publish/smr/view/maintain/SBPCSC060IPTV05P.html', '-', 'X', '', '');
+viewlist02('사고신고>신고완료>통장분실신고', '/publish/smr/view/maintain/SBPCSC060FINV04M.html', '-', 'X', '', '');
+viewlist02('사고신고>신고완료>계좌지급정지', '/publish/smr/view/maintain/SBPCSC060FINV04M.html', '-', 'X', '', '');
+viewlist02('사고신고>신고완료>현금(직불)카드', '/publish/smr/view/maintain/SBPCSC060FINV04M.html', '-', 'X', '', '');
+viewlist02('사고신고>신고완료>BC카드', '/publish/smr/view/maintain/SBPCSC060FINV04M.html', '-', 'X', '', '');
+viewlist02('해제>조회', '/publish/smr/view/maintain/SBPCSC070INQV01M.html', '-', 'X', '', '');
+viewlist02('해제>해제완료', '/publish/smr/view/maintain/SBPCSC070FINV20M.html', '-', 'X', '', '');
+viewlist02('수표조회>조회', '/publish/smr/view/maintain/SBPCSC080INQV01M.html', '-', 'X', '', '');
+viewlist02('수표조회>수표발행점조회', '/publish/smr/view/maintain/SBPCSC080INQV02M.html', '-', 'X', '', '');
+viewlist02('수표조회>정보확인>조회결과-정상', '/publish/smr/view/maintain/SBPCSC080DETV10M.html', '-', 'X', '', '');
+viewlist02('수표조회>정보확인>조회결과-사고신고', '/publish/smr/view/maintain/SBPCSC080DETV10M_1.html', '-', 'X', '', '');
+viewlist02('수표조회>신고완료', '/publish/smr/view/maintain/SBPCSC080FINV20M.html', '-', 'X', '', '');
+
+viewtitle02('지점찾기/번호표발급');
+viewlist02('지점찾기>영업점', '/publish/smr/view/maintain/SBPCSC090INQV02M.html', '-', 'X', '', '');
+viewlist02('지점찾기>자동화코너', '/publish/smr/view/maintain/SBPCSC090INQV03M.html', '-', 'X', '', '');
+viewlist02('지점찾기>지점상세화면', '/publish/smr/view/maintain/SBPCSC090DETV04M.html', '-', 'X', '', '');
+viewlist02('지점찾기>금융맵', '/publish/smr/view/maintain/SBP_MAP01.html', '-', 'X', '', '');
+viewlist02('지점찾기>금융맵', '/publish/smr/view/maintain/SBP_MAP02.html', '-', 'X', '', '');
+viewlist02('지점찾기>금융맵', '/publish/smr/view/maintain/SBP_MAP02_veiw.html', '-', 'X', '', '');
+viewlist02('지점찾기>금융맵', '/publish/smr/view/maintain/SBP_MAP03.html', '-', 'X', '', '');
+viewlist02('지점찾기>금융맵', '/publish/smr/view/maintain/SBP_MAP03_veiw.html', '-', 'X', '', '');
+viewlist02('번호표발급>조회', '/publish/smr/view/maintain/SBPCSC100INQV01M.html', '-', 'X', '', '');
+
+viewtitle02('방문예약');
+viewlist02('안내', '/publish/smr/view/maintain/SBPCSC110INQV01M.html', '-', 'X', '', '');
+viewlist02('신청>정보입력', '/publish/smr/view/maintain/SBPCSC110IPTV02M.html', '-', 'X', '', '');
+viewlist02('신청>신청완료', '/publish/smr/view/maintain/SBPCSC110FINV03M.html', '-', 'X', '', '');
+viewlist02('신청내역', '/publish/smr/view/maintain/SBPCSC110INQV04M.html', '-', 'X', '', '');
+
+viewtitle02('자주하는질문');
+viewlist02('자주하는질문', '/publish/smr/view/maintain/SBPCSC120LSTV01M.html', '-', 'X', '', '');
+
+viewtitle02('공지사항');
+viewlist02('목록', '/publish/smr/view/maintain/SBPCSC130LSTV01M.html', '-', 'X', '', '');
+viewlist02('상세', '/publish/smr/view/maintain/SBPCSC130DETV02M.html', '-', 'X', '', '');
+
+viewtitle02('이벤트');
+viewlist02('일반이벤트(창립53주년 퀴즈이벤트)', '/publish/smr/view/maintain/SBPFNL_event01.html', '-', 'X', '', '');
+viewlist02('일반이벤트(창립53주년 퀴즈이벤트)', '/publish/smr/view/maintain/SBPFNL_event02.html', '-', 'X', '', '');
+viewlist02('일반이벤트(창립53주년 퀴즈이벤트)', '/publish/smr/view/maintain/SBPFNL_event03.html', '-', 'X', '', '');
+viewlist02('일반이벤트', '/publish/smr/view/maintain/SBPFNL060LSTV01M.html', '-', 'X', '', '');
+viewlist02('MY엔젤K 포인트', '/publish/smr/view/maintain/SBPFNL090INQV01M.html', '-', 'X', '', '');
+viewlist02('MY엔젤K 포인트>적립 및 사용방법', '/publish/smr/view/maintain/SBPFNL090INQV02P.html', '-', 'X', '', '');
+viewlist02('일반이벤트>이벤트상세', '/publish/smr/view/maintain/SBPFNL080DETV01M.html', '-', 'X', '', '');
+viewlist02('경품이벤트', '/publish/smr/view/maintain/SBPFNL060LSTV02M.html', '-', 'X', '', '');
+viewlist02('경품이벤트>이벤트상세(즉석경품이벤트)', '/publish/smr/view/maintain/SBPFNL080DETV02M.html', '-', 'X', '', '');
+viewlist02('경품이벤트>이벤트상세(즉석경품이벤트)>이벤트참여_내정보최신화', '/publish/smr/view/maintain/SBPFNL080DETV02P_new.html', '-', 'X', '', '');
+viewlist02('경품이벤트>이벤트상세(즉석경품이벤트)>이벤트참여', '/publish/smr/view/maintain/SBPFNL080DETV02P.html', '-', 'X', '', '');
+viewlist02('경품이벤트>이벤트상세(즉석경품이벤트)>이벤트참여결과_당첨', '/publish/smr/view/maintain/SBPFNL080DETV03P.html', '-', 'X', '', '');
+viewlist02('경품이벤트>이벤트상세(즉석경품이벤트)>이벤트참여결과_미당첨', '/publish/smr/view/maintain/SBPFNL080DETV04P.html', '-', 'X', '', '');
+viewlist02('경품이벤트>이벤트상세(응모형 경품이벤트)', '/publish/smr/view/maintain/SBPFNL080DETV03M.html', '-', 'X', '', '');
+viewlist02('경품이벤트>이벤트상세(응모형 경품이벤트)>이벤트참여', '/publish/smr/view/maintain/SBPFNL080DETV05P.html', '-', 'X', '', '');
+viewlist02('당첨확인', '/publish/smr/view/maintain/SBPFNL070INQV01M.html', '-', 'X', '', '');
+
+viewtitle02('본인확인서등록');
+viewlist02('안내', '/publish/smr/view/maintain/SBPCSC140INQV01M.html', '-', 'X', '', '');
+viewlist02('정보입력', '/publish/smr/view/maintain/SBPCSC140IPTV20M.html', '-', 'X', '', '');
+viewlist02('정보입력>국가코드조회', '/publish/smr/view/maintain/SBPCSC140REGV30M.html', '-', 'X', '', '');
+viewlist02('완료', '/publish/smr/view/maintain/SBPCSC140FINV40M.html', '-', 'X', '', '');
+
+viewtitle02('고객확인제도');
+viewlist02('안내', '/publish/smr/view/maintain/SBPCSC150GUDV01M.html', '-', 'X', '', '');
+viewlist02('정보입력', '/publish/smr/view/maintain/SBPCSC150IPTV10M.html', '-', 'X', '', '');
+viewlist02('등록완료', '/publish/smr/view/maintain/SBPCSC150FINV30M.html', '-', 'X', '', '');
+
+viewtitle02('이용시간안내');
+viewlist02('이용시간안내', '/publish/smr/view/maintain/SBPCSC160GUDV01M.html', '-', 'X', '', '');
+
+viewtitle('인증/보안');
+viewtitle02('보안매체');
+viewlist02('디지털OTP>디지털OTP정보>디지털OTP정보조회', '/publish/smr/view/maintain/SBPSRC010INQV00M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>디지털OTP정보>발급/재발급>1단계_안내', '/publish/smr/view/maintain/SBPSRC020GUDV10M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>디지털OTP정보>발급/재발급>2단계_약관', '/publish/smr/view/maintain/SBPSRC020ISUV40M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>디지털OTP정보>발급/재발급>발급/재발급_3단계_이체한도 설정', '/publish/smr/view/maintain/SBPSRC020ISUV50M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>디지털OTP정보>발급/재발급>5단계_발급완료', '/publish/smr/view/maintain/SBPSRC020FINV70M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>영업점 발급등록>1단계_신청조회', '/publish/smr/view/maintain/SBPSRC030INQV10M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>영업점 발급등록>2단계_앱등록 코드', '/publish/smr/view/maintain/SBPSRC030REGV20M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>영업점 발급등록>3단계_발급완료', '/publish/smr/view/maintain/SBPSRC030FINV50M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>온라인 재등록>1단계_코드발급신청', '/publish/smr/view/maintain/SBPSRC040REGV10M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>온라인 재등록>2단계_등록완료', '/publish/smr/view/maintain/SBPSRC040FINV30M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>인증번호 생성>거래내역확인', '/publish/smr/view/maintain/SBPSRC050RSGV20M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>인증번호 생성>인증번호 생성(비밀번호확인)', '/publish/smr/view/maintain/SBPSRC050RSGV10M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>인증번호 생성>인증번호 생성', '/publish/smr/view/maintain/SBPSRC050RSGV30M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>비밀번호 재등록>1단계_안내', '/publish/smr/view/maintain/SBPSRC060GUDV10M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>비밀번호 재등록>3단계_완료', '/publish/smr/view/maintain/SBPSRC060FINV30M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>비밀번호 변경>1단계_안내', '/publish/smr/view/maintain/SBPSRC070GUDV10M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>비밀번호 변경>2단계_완료', '/publish/smr/view/maintain/SBPSRC070FINV30M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>이용해지>1단계_안내', '/publish/smr/view/maintain/SBPSRC080GUDV10M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>이용해지>1단계_안내>OTP발생기조회', '/publish/smr/view/maintain/SBPSRC080RSGV11P.html', '-', 'X', '', '');
+viewlist02('디지털OTP>이용해지>2단계_해지신청', '/publish/smr/view/maintain/SBPSRC080RSGV20M.html', '-', 'X', '', '');
+viewlist02('디지털OTP>이용해지>4단계_해지완료', '/publish/smr/view/maintain/SBPSRC080FINV40M.html', '-', 'X', '', '');
+
+viewtitle('설정');
+viewtitle02('앱관리');
+viewlist02('버전정보', '/publish/smr/view/maintain/SBPAPC100MNGV00M.html', '-', 'X', '', '');
+viewlist02('캐시삭제/리소스갱신', '/publish/smr/view/maintain/SBPAPC110MNGV00M.html', '-', 'X', '', '');
+
+viewtitle02('모바일뱅킹');
+viewlist02('장기미사용정지해제>로그인', '/publish/smr/view/maintain/SBPAPC120MNGV00M.html', '-', 'X', '', '');
+viewlist02('장기미사용정지해제>비로그인', '/publish/smr/view/maintain/SBPAPC120MNGV01M.html', '-', 'X', '', '');
+viewlist02('장기미사용정지해제>완료', '/publish/smr/view/maintain/SBPAPC120MNGV02M.html', '-', 'X', '', '');
+viewlist02('서비스해지>해지신청', '/publish/smr/view/maintain/SBPAPC130TRSV10M.html', '-', 'X', '', '');
+viewlist02('서비스해지>완료', '/publish/smr/view/maintain/SBPAPC130TRSV20M.html', '-', 'X', '', '');
+viewlist02('서비스해지>해지불가', '/publish/smr/view/maintain/SBPAPC130FINV30M.html', '-', 'X', '', '');
+
+viewtitle02('BNK 은퇴연금라운지');
+viewlist02('BNK 은퇴연금라운지', '/publish/smr/view/maintain/pension_lounge.html', '-', 'X', '', '');
+
+viewtitle('추가화면');
+viewtitle02('추가인증');
+viewlist02('ARS전화인증1', '/publish/smr/view/maintain/SBPSRC240TRSV04M.html', '-', 'X', '', '');
+viewlist02('ARS전화인증2', '/publish/smr/view/maintain/SBPCOM200CERV01M.html', '-', 'X', '', '');
+viewlist02('ARS전화인증5', '/publish/smr/view/maintain/SBPCOM200CERV06M.html', '-', 'X', '', '');
+
+viewlist02('내정보', '/publish/smr/view/maintain/SBPMPG010DETV02M.html', '-', 'X', '', '');
+
+viewlist02('비대면실명인증(타행)', '/publish/smr/view/maintain/SBPCOM240CERV06P.html', '-', 'X', '', '');
+// viewlist02('비대면실명인증1', '/publish/smr/view/maintain/SBPCOM240CERV01M.html', '-', 'X', '', '');
+viewlist02('비대면실명인증2', '/publish/smr/view/maintain/SBPCOM240CERV02P_ver2.html', '-', 'X', '', '');
+viewlist02('비대면실명인증2(65세 이상)', '/publish/smr/view/maintain/SBPCOM240CERV02P_ver3.html', '-', 'X', '', '');
+viewlist02('비대면실명인증5(당행)', '/publish/smr/view/maintain/SBPCOM240CERV05P.html', '-', 'X', '', '');
+
+
+viewlist02('서비스해지', '/publish/smr/view/maintain/SBPAPC130TRSV10M.html', '-', 'X', '', '');
+
+viewlist02('장기미사용정지해제', '/publish/smr/view/maintain/SBPAPC120MNGV00M.html', '-', 'X', '', '');
+
+viewlist02('한도제한해제1', '/publish/smr/view/maintain/SBPCOM170GUDV10M.html', '-', 'X', '', '');
+
+viewlist02('alert sample', '/publish/smr/view/maintain/alert_pop.html', '-', 'X', '', '');
+viewlist02('은행선택', '/publish/smr/view/maintain/SBPCOM020MNGV01M.html', '-', 'X', '', '');
+
+
+
+
+
+					</script>
+	
+				</tbody>
+	
+			</table>
+		</div>
+	</div>
+	
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+	
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+			</div>
+	
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+</body>
+</html>

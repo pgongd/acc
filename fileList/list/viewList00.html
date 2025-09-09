@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">공통</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+	
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>기획 버전</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<script type="text/javascript">
+						viewlist('MO인증', '/publish/smr/view/com/SBPCOMS10CERV00P.html', '2023-08-30', 'O', '서현호','','');
+						viewlist('휴대폰본인인증', '/publish/smr/view/com/SBPCOMS10CERV10P.html', '2023-08-25', 'O', '서현호','','');
+						viewlist('휴대폰본인인증 (input error)', '/publish/smr/view/com/SBPCOMS10CERV10P_02.html', '2023-08-25', 'O', '서현호','','');
+						viewlist('휴대폰본인인증 (약관동의)', '/publish/smr/view/com/SBPCOMS10CERV10P_03.html', '2023-08-25', 'O', '서현호','','');
+						viewlist('비대면실명인증안내 > 비대면실명인증안내_모바일신분증포함', '/publish/smr/view/com/SBPCOMS10GUDV00P.html', '2023-08-28', 'O', '서현호','','');
+						viewlist('비대면실명인증안내 > 비대면실명인증안내_모바일신분증불포함', '/publish/smr/view/com/SBPCOMS10GUDV01P.html', '2023-08-31', 'O', '서현호','','');
+						viewlist('계좌이동서비스 > 계좌이동서비청 신청 > 추천직원 선택 (검색전)', '/publish/smr/view/com/SBPCOMS10INQV00P.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('계좌이동서비스 > 계좌이동서비청 신청 > 추천직원 선택 (검색후)', '/publish/smr/view/com/SBPCOMS10INQV00P_02.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('계좌이동서비스 > 계좌이동서비청 신청 > 추천직원 선택 (검색결과 없음)', '/publish/smr/view/com/SBPCOMS10INQV00P_03.html', '2023-08-25', 'O', '서현호','','');
+						viewlist('금액키패드', '/publish/smr/view/com/SBPCOMS10IPTV00P.html', '2023-08-14', 'O', '서현호','','');
+						viewlist('메모관리', '/publish/smr/view/com/SBPCOMS10MNGV00P.html', '2023-11-06', 'O', '서현호','','');
+						viewlist('이체확인증', '/publish/smr/view/com/SBPCOMS10OUTV00P.html', '2023-09-19', 'O', '서현호','','');
+						viewlist('이체확인증(table - 이미지 저장 개발대응용)', '/publish/smr/view/com/SBPCOMS10OUTV00P_02.html', '2023-09-19', 'O', '서현호','','');
+						viewlist('계좌보기 > 계좌선택 (연락처 있음)', '/publish/smr/view/com/SBPCOMS10SETV00P.html', '2023-10-27', 'O', '서현호','','');
+						viewlist('계좌보기 > 계좌선택 (연락처 없음)', '/publish/smr/view/com/SBPCOMS10SETV00P_02.html', '2023-10-27', 'O', '서현호','','');
+						viewlist('계좌보기 > 계좌선택 (다건이체)', '/publish/smr/view/com/SBPCOMS10SETV00P_03.html', '2023-10-27', 'O', '서현호','','');
+						viewlist('약관동의', '/publish/smr/view/com/SBPCOMS10TERV00M.html', '2023-09-04', 'O', '서현호','','');
+						viewlist('PDF뷰어_동의없음', '/publish/smr/view/com/SBPCOMS10TERV10P.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('PDF뷰어_동의있음', '/publish/smr/view/com/SBPCOMS10TERV11P.html', '2023-09-04', 'O', '서현호','','');
+						viewlist('400/500에러안내', '/publish/smr/view/com/SBPCOMS20GUDV00M.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('주소검색 (검색전)', '/publish/smr/view/com/SBPCOMS20INQV00P.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('주소검색 (검색후)', '/publish/smr/view/com/SBPCOMS20INQV00P_02.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('주소검색 (검색결과 없음)', '/publish/smr/view/com/SBPCOMS20INQV00P_03.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('주소검색 (상세주소입력)', '/publish/smr/view/com/SBPCOMS20INQV00P_04.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('계좌별명관리', '/publish/smr/view/com/SBPCOMS20MNGV00P.html', '2023-10-05', 'O', '서현호','','');
+						viewlist('통장사본', '/publish/smr/view/com/SBPCOMS20OUTV00P.html', '2023-09-22', 'O', '서현호','','');
+						viewlist('통장사본(table - 이미지 저장 개발대응용)', '/publish/smr/view/com/SBPCOMS20OUTV00P_02.html', '2023-09-22', 'O', '서현호','','');
+						// viewlist('통장사본', '/publish/smr/view/com/SBPCOMS20OUTV00P_back.html', '2023-09-22', 'O', '서현호','','');
+						viewlist('금융사선택[은행/증권사]', '/publish/smr/view/com/SBPCOMS20SETV00P.html', '2023-08-25', 'O', '서현호','','');
+						viewlist('금융사선택[은행]', '/publish/smr/view/com/SBPCOMS20SETV00P_02.html', '2023-10-27', 'O', '서현호','','');
+						viewlist('금융사선택[다른금융]', '/publish/smr/view/com/SBPCOMS20SETV00P_03.html', '2023-10-30', 'O', '서현호','','');
+						viewlist('서비스점검중안내', '/publish/smr/view/com/SBPCOMS30GUDV00M.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('영업점검색 (검색전)', '/publish/smr/view/com/SBPCOMS30INQV00P.html', '2023-09-18', 'O', '서현호','','');
+						viewlist('영업점검색 (검색후)', '/publish/smr/view/com/SBPCOMS30INQV00P_02.html', '2023-09-18', 'O', '서현호','','');
+						viewlist('영업점검색 (검색결과 없음)', '/publish/smr/view/com/SBPCOMS30INQV00P_03.html', '2023-09-18', 'O', '서현호','','');
+						viewlist('시간대선택', '/publish/smr/view/com/SBPCOMS30SETV00P.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('네트워크에러안내', '/publish/smr/view/com/SBPCOMS40GUDV00M.html', '2023-09-08', 'O', '서현호','','');
+						viewlist('이메일도메인선택', '/publish/smr/view/com/SBPCOMS40SETV00P.html', '2023-09-08', 'O', '서현호','','');
+						// viewlist('서비스접속대기안내', '/publish/smr/view/com/SBPCOMS50GUDV00M.html', '2023-09-08', 'X', '서현호','','이미지필요');
+						// viewlist('서비스가능시간안내', '/publish/smr/view/com/SBPCOMS50GUDV00M_02.html', '2023-09-08', 'X', '서현호','','이미지필요');
+						viewlist('스켈레톤', '/publish/smr/view/cmn/skeleton.html', '2023-10-11', 'O', '서현호','','');
+						viewlist('로딩화면', '/publish/smr/view/cmn/loading.html', '2023-10-31', 'O', '서현호','','');
+						viewlist('로딩화면(% 텍스트)', '/publish/smr/view/cmn/loading02.html', '2023-10-31', 'O', '서현호','','');
+						viewlist('로딩화면(예제)', '/publish/smr/view/cmn/loading03.html', '2023-10-31', 'O', '서현호','','');
+						viewlist('로딩화면(예제 중앙팝업)', '/publish/smr/view/cmn/loading04.html', '2023-10-31', 'O', '서현호','','');
+						viewlist('SNS공유', '/publish/smr/view/com/SBPCOMS70SETV00P.html', '2023-11-01', 'O', '서현호','','');
+						viewlist('셀렉트 박스(nodata)', '/publish/smr/view/cmn/select_nodata.html', '2024-01-09', 'O', '서현호','','');
+
+					</script>
+	
+				</tbody>
+	
+			</table>
+		</div>
+	</div>
+	
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+	
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+			</div>
+	
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+</body>
+</html>

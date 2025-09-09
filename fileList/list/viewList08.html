@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">인증/보안</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>기획 버전</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<script type="text/javascript">
+
+					// viewtitle('');
+					// viewtitle02('');
+					
+					
+					viewtitle('모바일인증');
+					viewlist('모바일인증선택(등록 전)', '/publish/smr/view/ctc/SBPCTCS10IDXV00M.html', '2023-09-12', 'O', '서현호', 'v1.01','');
+					viewlist('모바일인증선택(등록 후)', '/publish/smr/view/ctc/SBPCTCS10IDXV00M_02.html', '2023-09-12', 'O', '서현호', 'v1.01','');
+					viewlist('본인계좌인증', '/publish/smr/view/ctc/SBPCTCS10CERV30M.html', '2023-10-13', 'O', '송나영', 'v1.01','');
+					viewlist('약관동의', '/publish/smr/view/ctc/SBPCTCS10TERV20M.html', '2023-09-12', 'O', '송나영', 'v1.01','');
+					viewlist('모바일인증등록완료', '/publish/smr/view/ctc/SBPCTCS10FINV50M.html', '2023-09-26', 'O', '하유희', 'v1.01','');
+					viewlist('모바일인증추가등록', '/publish/smr/view/ctc/SBPCTCS10LSTV40P.html', '2023-09-12', 'O', '서현호', 'v1.01','');
+					viewtitle02('간편비밀번호등록');
+					viewlist('간편비밀번호등록안내', '/publish/smr/view/ctc/SBPCTCS20GUDV10P.html', '2023-09-12', 'O', '송나영', 'v1.01','');
+					viewlist('간편비밀번호등록', '/publish/smr/view/ctc/SBPCTCS20REGV20M.html', '2023-09-12', 'O', '서현호', 'v1.01','');
+					viewtitle02('패턴등록');
+					viewlist('패턴등록안내', '/publish/smr/view/ctc/SBPCTCS30GUDV10P.html', '2023-09-12', 'O', '송나영', 'v1.01','');
+					viewlist('패턴등록', '/publish/smr/view/ctc/SBPCTCS30REGV20M.html', '2023-09-12', 'O', '서현호', 'v1.01','');
+					viewtitle02('FaceID등록');
+					viewlist('FaceID등록안내', '/publish/smr/view/ctc/SBPCTCS40GUDV10P.html', '2023-09-12', 'O', '송나영', 'v1.01','');
+					viewlist('FaceID등록', '/publish/smr/view/ctc/SBPCTCS40REGV20M.html', '2023-09-12', 'O', '서현호', 'v1.01','');
+					viewtitle02('지문등록');
+					viewlist('지문등록안내', '/publish/smr/view/ctc/SBPCTCS50GUDV10P.html', '2023-09-12', 'O', '송나영', 'v1.01','');
+					viewlist('지문등록', '/publish/smr/view/ctc/SBPCTCS50REGV20M.html', '2023-09-12', 'O', '서현호', 'v1.01','');
+					
+					viewtitle02('간편비밀번호해지');
+					viewlist('간편비밀번호해지안내', '/publish/smr/view/ctc/SBPCTCS20RLSV10M.html','2023-09-12', 'O', '하유희', 'v1.01','');
+					viewlist('간편비밀번호해지완료', '/publish/smr/view/ctc/SBPCTCS20FINV20M.html', '2023-10-30', 'O', '하유희', 'v1.01','');
+					viewtitle02('패턴해지');
+					viewlist('패턴해지안내', '/publish/smr/view/ctc/SBPCTCS30RLSV10M.html','2023-09-12', 'O', '하유희', 'v1.01','');
+					viewlist('패턴해지완료', '/publish/smr/view/ctc/SBPCTCS30FINV20M.html', '2023-10-30', 'O', '하유희', 'v1.01','');
+					viewtitle02('FaceID해지');
+					viewlist('FaceID해지안내', '/publish/smr/view/ctc/SBPCTCS40RLSV10M.html','2023-09-12', 'O', '하유희', 'v1.01','');
+					viewlist('FaceID해지완료', '/publish/smr/view/ctc/SBPCTCS40FINV20M.html', '2023-10-26', 'O', '하유희', 'v1.01','');
+					viewtitle02('지문해지');
+					viewlist('지문해지안내', '/publish/smr/view/ctc/SBPCTCS50RLSV10M.html','2023-09-12', 'O', '하유희', 'v1.01','');
+					viewlist('지문해지완료', '/publish/smr/view/ctc/SBPCTCS50FINV20M.html', '2023-10-30', 'O', '하유희', 'v1.01','');
+					
+					viewtitle('보안매체');
+					viewtitle02('디지털OTP');
+					viewlist('발급/재발급 > 디지털OTP발급안내', '/publish/smr/view/src/SBPSRCS20GUDV00M.html', '2023-10-19', 'O', '하유희', 'v1.02','');
+					viewlist('발급/재발급 > 디지털OTP발급안내 > 발급방법선택(팝업)', '/publish/smr/view/src/SBPSRCS20GUDV00M_02.html', '2023-09-07', 'O', '하유희', 'v1.02','');
+					viewlist('발급/재발급 > 디지털OTP발급안내 > 약관동의(팝업)', '/publish/smr/view/src/SBPSRCS20GUDV00M_03.html', '2023-10-13', 'O', '서현호', 'v1.02','');
+					viewlist('발급/재발급 > 타행디지털OTP신고자안내', '/publish/smr/view/src/SBPSRCS20ISUV11M.html', '2023-10-19', 'O', '하유희', 'v1.02','');
+					viewlist('발급/재발급 > 디지털OTP발급완료', '/publish/smr/view/src/SBPSRCS20FINV10M.html', '2023-08-31', 'O', '하유희', 'v1.02','');
+
+
+
+
+
+
+					</script>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+			</div>
+
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+
+</body>
+</html>

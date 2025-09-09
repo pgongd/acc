@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">뱅킹서비스</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>기획 버전</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<script type="text/javascript">
+
+					// viewtitle('');
+					// viewtitle02('');
+
+					viewtitle('ATM');
+					viewlist('ATM인증번호출금 > ATM인증번호출금가이드', '/publish/smr/view/atm/SBPATMS10GUDV00M.html', '2023-10-10', 'O', '서현호','v1.04', '');
+					viewlist('NFC출금 > NFC출금미가입고객', '/publish/smr/view/atm/SBPATMS20GUDV00M.html', '2023-08-24', 'O', '하유희', 'v1.04', '');
+					viewlist('NFC출금 > NFC출금가입고객', '/publish/smr/view/atm/SBPATMS20GUDV00M_02.html', '2023-08-24', 'O', '하유희', 'v1.04', '');
+					viewlist('ATM인증번호출금 > ATM출금이용방법안내일반', '/publish/smr/view/atm/SBPATMS30GUDV00P.html', '2023-08-23', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM인증번호출금 > ATM출금신청일반', '/publish/smr/view/atm/SBPATMS30APLV00M.html', '2023-10-31', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM인증번호출금 > 신청내역확인일반', '/publish/smr/view/atm/SBPATMS30APLV10M.html', '2023-10-10', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금관리목록', '/publish/smr/view/atm/SBPATMS40LSTV00M.html', '2023-10-10', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금등록 약관동의', '/publish/smr/view/atm/SBPATMS40TERV11M.html', '2023-10-26', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금신청완료 - 단건', '/publish/smr/view/atm/SBPATMS40FINV10M.html', '2023-10-10', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금신청완료 - 다건', '/publish/smr/view/atm/SBPATMS40FINV10M_02.html', '2023-08-23', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금신청완료 - 다건 내역', '/publish/smr/view/atm/SBPATMS40FINV10M_03.html', '2023-08-23', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금해지완료 - 단건', '/publish/smr/view/atm/SBPATMS40FINV11M.html', '2023-10-10', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금해지완료 - 다건', '/publish/smr/view/atm/SBPATMS40FINV11M_02.html', '2023-08-23', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금해지완료 - 다건 내역', '/publish/smr/view/atm/SBPATMS40FINV11M_03.html', '2023-08-23', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금한도변경목록', '/publish/smr/view/atm/SBPATMS40LSTV10M.html', '2023-10-20', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금한도정보입력', '/publish/smr/view/atm/SBPATMS40CHGV20M.html', '2023-10-10', 'O', '하유희', 'v1.03', '');
+					viewlist('ATM통장출금 > ATM통장출금한도변경완료', '/publish/smr/view/atm/SBPATMS40FINV30M.html', '2023-10-10', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 무통장무카드관리목록', '/publish/smr/view/atm/SBPATMS50LSTV00M.html', '2023-10-20', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 무통장무카드관리등록 약관동의', '/publish/smr/view/atm/SBPATMS50TERV11M.html', '2023-08-23', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 무통장무카드신청완료', '/publish/smr/view/atm/SBPATMS50FINV10M.html', '2023-10-26', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 무통장무카드해지완료 - 단건', '/publish/smr/view/atm/SBPATMS50FINV11M.html', '2023-09-19', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 무통장무카드해지완료 - 다건', '/publish/smr/view/atm/SBPATMS50FINV11M_02.html', '2023-09-19', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 무통장무카드해지완료 - 다건 내역', '/publish/smr/view/atm/SBPATMS50FINV11M_03.html', '2023-10-26', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 조회및한도변경목록', '/publish/smr/view/atm/SBPATMS55LSTV10M.html', '2023-10-26', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 변경정보입력', '/publish/smr/view/atm/SBPATMS55CHGV20M.html', '2023-10-11', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 조회및한도변경완료', '/publish/smr/view/atm/SBPATMS55FINV30M.html', '2023-09-19', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 비밀번호변경', '/publish/smr/view/atm/SBPATMS59CHGV21M.html', '2023-10-25', 'O', '하유희', 'v1.03', '');
+					viewlist('무통장무카드 > 비밀번호변경완료', '/publish/smr/view/atm/SBPATMS59FINV31M.html', '2023-09-19', 'O', '하유희', 'v1.03', '');
+
+					viewtitle('오픈뱅킹관리');
+					viewlist('공통 > 오픈뱅킹약관동의', '/publish/smr/view/opb/SBPOPBS00TERV00M.html', '2023-09-20', 'O', '서현호', 'v1.06', '');
+					viewlist('공통 > 오픈뱅킹약관동의 - 계좌통합관리재이용동의', '/publish/smr/view/opb/SBPOPBS00TERV00M_02.html', '2023-09-20', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹가입 > 오픈뱅킹가입안내', '/publish/smr/view/opb/SBPOPBS10GUDV00M.html', '2023-10-18', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹가입 > 이메일정보입력', '/publish/smr/view/opb/SBPOPBS10IPTV10M.html', '2023-10-11', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹가입 > 오픈뱅킹선택등록', '/publish/smr/view/opb/SBPOPBS10REGV20M.html', '2023-09-20', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹가입 > 오픈뱅킹계좌번호입력', '/publish/smr/view/opb/SBPOPBS10IPTV20P.html', '2023-09-20', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹가입 > 오픈뱅킹등록완료 - 단건', '/publish/smr/view/opb/SBPOPBS10FINV30M.html', '2023-10-11', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹가입 > 오픈뱅킹등록완료 - 다건', '/publish/smr/view/opb/SBPOPBS10FINV30M_02.html', '2023-10-11', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹가입 > 오픈뱅킹등록완료 - 다건 내역', '/publish/smr/view/opb/SBPOPBS10FINV30M_03.html', '2023-10-11', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹계좌관리 > 오픈뱅킹계좌관리목록', '/publish/smr/view/opb/SBPOPBS20LSTV00M.html', '2023-09-26', 'O', '송나영', 'v1.06', '');
+					viewlist('오픈뱅킹계좌관리 > 오픈뱅킹 변경 확인 - ', '/publish/smr/view/opb/SBPOPBS20LSTV00M_02.html', '2023-10-11', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹계좌관리 > 이메일정보변경', '/publish/smr/view/opb/SBPOPBS20CHGV10P.html', '2023-10-11', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹계좌관리 > 오픈뱅킹변경완료', '/publish/smr/view/opb/SBPOPBS20FINV10M.html', '2023-10-11', 'O', '서현호', 'v1.06', '');
+					viewlist('오픈뱅킹계좌관리 > 오픈뱅킹변경완료 - 내역', '/publish/smr/view/opb/SBPOPBS20FINV10M_02.html', '2023-09-26', 'O', '서현호', 'v1.06', '');
+					viewlist('자금반환신청 > 이체내역목록', '/publish/smr/view/opb/SBPOPBS30LSTV10M.html', '2023-09-22', 'O', '하유희', 'v1.06', '');
+					viewlist('자금반환신청 > 자금반환신청안내', '/publish/smr/view/opb/SBPOPBS30GUDV00M.html', '2023-09-22', 'O', '하유희', 'v1.06', '');
+					viewlist('자금반환신청 > 자금반환신청정보입력', '/publish/smr/view/opb/SBPOPBS30APLV20M.html', '2023-10-11', 'O', '하유희', 'v1.02', '');
+					viewlist('자금반환신청 > 자금반환신청정보입력 - 신청정보확인', '/publish/smr/view/opb/SBPOPBS30APLV20M_02.html', '2023-10-11', 'O', '하유희', 'v1.06', '');
+					viewlist('자금반환신청 > 자금반환신청완료', '/publish/smr/view/opb/SBPOPBS30FINV30M.html', '2023-09-22', 'O', '하유희', 'v1.06', '');
+					viewlist('자금반환신청 > 접수내역조회', '/publish/smr/view/opb/SBPOPBS30LSTV11M.html', '2023-09-22', 'O', '하유희', 'v1.06', '');
+					viewlist('사고예방서비스 > 사고예방서비스', '/publish/smr/view/opb/SBPOPBS40APLV00M.html', '2023-10-12', 'O', '하유희', 'v1.06', '');
+					viewlist('사고예방서비스 > 사고예방서비스 - 경남은행', '/publish/smr/view/opb/SBPOPBS40APLV00M_02.html', '2023-10-12', 'O', '서현호', 'v1.06', '');
+					viewlist('사고예방서비스 > 사고예방서비스 - 다른기관', '/publish/smr/view/opb/SBPOPBS40APLV00M_03.html', '2023-10-12', 'O', '서현호', 'v1.06', '');
+					viewlist('사고예방서비스 > 사고예방서비스 - 오픈뱅킹', '/publish/smr/view/opb/SBPOPBS40APLV00M_04.html', '2023-10-12', 'O', '서현호', 'v1.06', '');
+					viewlist('사고예방서비스 > 사고예방서비스신청완료', '/publish/smr/view/opb/SBPOPBS40FINV10M.html', '2023-09-22', 'O', '하유희', 'v1.06', '');
+					viewlist('잔액채우기 > 잔액채우기기본형', '/publish/smr/view/opb/SBPOPBS50TRFV00M.html', '2023-11-09', 'O', '서현호', 'v1.06', '');
+//					viewlist('잔액채우기 > 잔액채우기기본형', '/publish/smr/view/opb/SBPOPBS50TRFV00M_back.html', '2023-10-26', 'O', '서현호', 'v1.06', '');
+					viewlist('잔액채우기 > 잔액채우기 - 입력확인', '/publish/smr/view/opb/SBPOPBS50TRFV00M_02.html', '2023-09-21', 'O', '서현호', 'v1.06', '');
+					viewlist('잔액채우기 > 잔액채우기완료', '/publish/smr/view/opb/SBPOPBS50FINV30M.html', '2023-10-26', 'O', '서현호', 'v1.06', '');
+					viewlist('잔액채우기 > 잔액채우기완료 - 상세', '/publish/smr/view/opb/SBPOPBS50FINV30M_02.html', '2023-10-26', 'O', '서현호', 'v1.06', '');
+
+					viewtitle('자동충전서비스');
+					viewlist('자동충전서비스안내', '/publish/smr/view/opb/SBPOPBS60GUDV00M.html', '2023-09-22', 'O', '하유희', 'v1.06', '');
+					viewlist('자동충전서비스약관', '/publish/smr/view/opb/SBPOPBS60TERV10M.html', '2023-09-22', 'O', '하유희', 'v1.06', '');
+					viewlist('자동충전서비스등록', '/publish/smr/view/opb/SBPOPBS60REGV20M.html', '2023-10-30', 'O', '하유희', 'v1.11', '');
+					viewlist('자동충전서비스등록(잔액부족시1)', '/publish/smr/view/opb/SBPOPBS60REGV20M_02.html', '2023-11-07', 'O', '하유희', 'v1.11', '');
+					viewlist('자동충전서비스등록(잔액부족시2)', '/publish/smr/view/opb/SBPOPBS60REGV20M_03.html', '2023-11-07', 'O', '하유희', 'v1.11', '');
+					viewlist('자동충전서비스등록(대출이자/카드결제액 부족시)', '/publish/smr/view/opb/SBPOPBS60REGV20M_04.html', '2023-11-07', 'O', '하유희', 'v1.11', '');
+					viewlist('자동충전서비스관리', '/publish/smr/view/opb/SBPOPBS60CHGV21M.html', '2023-10-30', 'O', '하유희', 'v1.11', '');
+					viewlist('자동충전서비스등록 > 자동충전서비스등록완료', '/publish/smr/view/opb/SBPOPBS60FINV30M.html', '2023-10-30', 'O', '하유희', 'v1.06', '');
+					viewlist('자동충전서비스조회', '/publish/smr/view/opb/SBPOPBS70LSTV00M.html', '2023-10-26', 'O', '하유희', 'v1.06', '');
+					viewlist('자동충전서비스조회 > 자동충전서비스해제완료', '/publish/smr/view/opb/SBPOPBS70FINV10M.html', '2023-09-22', 'O', '하유희', 'v1.06', '');
+
+
+
+					</script>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+			</div>
+
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+
+</body>
+</html>

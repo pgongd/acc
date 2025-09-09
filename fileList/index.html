@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행 HTML List</title>
+
+	<link rel="stylesheet" href="./css/base.css">
+	<link rel="stylesheet" href="./css/fonts.css">
+	
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+
+	<script>
+
+		$(document).on('click', '.fileListWrap .left .btn_open', function() {
+			console.log('click left ===================');
+			if(window.innerWidth <= 750) {
+				var _this = $(this);
+				var _left = _this.closest('.left');
+				var _isOpen = parseInt(_left.css('left'));
+
+				console.log(_isOpen);
+
+				if(_isOpen < 0) {
+					_left.removeClass('close');
+				}else{
+					_left.addClass('close');
+				}
+
+			}
+		});
+
+	</script>
+
+
+
+
+	<style>
+		html, body {height:100%;}
+		.fileListWrap {min-height:100%;padding-left:240px;}
+		.fileListWrap .left {position:fixed;left:0;top:0;bottom:0;box-sizing:border-box;width:240px;border-right:1px solid #eee;z-index:1;}
+		.fileListWrap .left iframe {width:100%;height:100%;}
+		.fileListWrap .left .btn_open {display:none;position:absolute;right:-30px;top:0;width:30px;height:30px;background-color:#000;}
+		.fileListWrap .left.close {left:0;}
+		.fileListWrap .body {position:fixed;left:240px;top:0;right:0;bottom:0;}
+		.fileListWrap .body iframe {width:100%;height:100%;}
+
+		@media(max-width : 750px) {
+			.fileListWrap {padding-left:0;}
+			.fileListWrap .left .btn_open {display:block;}
+			.fileListWrap .left.close {left:-240px;}
+			.fileListWrap .body {left:0;}
+		}
+	</style>
+
+</head>
+<body>
+
+<div class="fileListWrap">
+
+	<div class="left">
+		<button type="button" class="btn_open"></button>
+		<iframe src="./left.html" id="menuContent" name="menuContent" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+	</div>
+
+	<div class="body">
+		<iframe src="./body.html" id="listContent" name="listContent" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+	</div>
+	
+</div>
+
+</body>
+</html>

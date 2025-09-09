@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="./css/base.css">
+	<link rel="stylesheet" href="./css/fonts.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+
+	<style type="text/css">
+		body {color:#fff;background-color:#000;}
+		.fileListLnb .headTit {display:block;box-sizing:border-box;padding:30px 0;font-size:18px;font-weight:700;text-align:center;background:#d81921 url('https://mdsbp.knbank.co.kr/publish/sbp/guide/logo.png') no-repeat center;}
+			
+		/* .fileListLnb .depth01 > li > a {display:block;padding:10px;font-size:16px;font-weight:500;color:#fff;border-top: 1px solid #2d2d2d;background: #646464;} */
+		.fileListLnb .depth01 > li > a {display:block;position:relative;padding:10px 20px 10px 10px;font-size:16px;font-weight:500;color:#000;border-top: 1px solid #2d2d2d;background: #d9d9d9;}
+		.fileListLnb .depth01 > li > a:after {position:absolute;top:18px;right:10px;width:0;height:0;border-top:8px solid #999;border-left:6px solid transparent;border-right:6px solid transparent;content:'';}
+		.fileListLnb .depth01 > li > a:only-child:after {display:none;}
+		.fileListLnb .depth01 > li:first-child > a {border-top:none;}
+		.fileListLnb .depth01 > li.active > a:after {border-top:none;border-bottom:8px solid #d81921;}
+
+		.fileListLnb .depth02 {display:none;}
+		.fileListLnb .depth02 > li > a {display:block;padding:10px 10px 10px 15px;font-size:14px;font-weight:500;color:#fff;border-top: 1px dashed rgba(255,255,255,0.5);}
+		.fileListLnb .depth02 > li:first-child > a {border-top:none;}
+
+	</style>
+
+	<script type="text/javascript">
+
+		var parentDom = window.parent.document;
+		var bodyIframe = $('.body iframe', parentDom);
+
+		$(document).ready(function() {
+			fileListMenuFn();
+		});
+
+
+		var fileListMenuFn = function() {
+			var _wrap = $('.fileListLnb');
+			var _depth01 = $('.depth01', _wrap);
+			var _items01 = $('> li > a', _depth01);
+			var _depth02 = $('.depth02', _wrap);
+			var _items02 = $('> li > a', _depth02);
+
+			$(' > .active .depth02', _depth01).show();
+
+			_items01.on('click', function(e) {
+				var _this = $(this);
+				var _itemBox = _this.closest('li');
+				var _thisSub = _this.next();
+				var _href = _this.attr('href');
+
+
+				if(_this.hasClass('link')) {
+					console.log('_href');
+					e.preventDefault();
+					window.parent.open(_href);
+					return;
+				}
+
+				if(_thisSub.is(':animated')) return;
+
+				if(!_itemBox.hasClass('active')) {
+					_items01.parent().removeClass('active');
+					_depth02.slideUp();
+					_itemBox.addClass('active');
+					_thisSub.slideDown();
+				}else{
+					_itemBox.removeClass('active');
+					_thisSub.slideUp();
+					_depth02.slideUp();
+				}
+			});
+
+			_items02.on('click', function(e) {
+				e.preventDefault();
+				var _this = $(this);
+				var _href = _this.attr('href');
+				console.log(_href);
+
+				var _url = _href;
+
+				bodyIframe.attr('src', _url);
+			});
+
+
+		}
+	</script>
+
+</head>
+<body>
+
+	<nav class="fileListLnb">
+		<a href="/publish/smr/fileList/index.html" class="headTit">
+			<!-- 경남은행<br />모바일뱅킹 -->
+		</a>
+
+		<ul class="depth01">
+			<li>
+				<a href="#">기본 가이드</a>
+
+				<ul class="depth02">
+					<li><a href="/publish/smr/guide/html_rule.html">HTML 규칙</a></li>
+					<li><a href="/publish/smr/guide/css_rule.html">CSS 규칙</a></li>
+					<li><a href="/publish/smr/guide/directory.html">디렉토리 구조</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">UI 가이드</a>
+
+				<ul class="depth02">
+					<!-- <li><a href="/publish/smr/guide/cmn.html">COMMON</a></li> -->
+					<li><a href="/publish/smr/guide/header.html">HEADER</a></li>
+					<li><a href="/publish/smr/guide/cmn.html">COMMON</a></li>
+					<li><a href="/publish/smr/guide/typoghrapy.html">TYPOGHRAPY</a></li>
+					<li><a href="/publish/smr/guide/button.html">BUTTON</a></li>
+					<li><a href="/publish/smr/guide/input.html">INPUT</a></li>
+					<li><a href="/publish/smr/guide/check.html">RADIO/CHECK</a></li>
+					<li><a href="/publish/smr/guide/select.html">SELECT</a></li>
+					<li><a href="/publish/smr/guide/combo.html">COMBO LIST</a></li>
+					<li><a href="/publish/smr/guide/table.html">TABLE</a></li>
+					<li><a href="/publish/smr/guide/label.html">LABEL/BADGE</a></li>
+					<li><a href="/publish/smr/guide/tab.html">TAB</a></li>
+					<li><a href="/publish/smr/guide/fold.html">ACCORDIAN BOX</a></li>
+					<li><a href="/publish/smr/guide/info_view.html">INFO VIEW BOX</a></li>
+					<li><a href="/publish/smr/guide/info_form.html">INFO FORM BOX</a></li>
+					<li><a href="/publish/smr/guide/acc_card.html">ACCOUNT CARD</a></li>
+					<li><a href="/publish/smr/guide/list.html">LIST</a></li>
+					<li><a href="/publish/smr/guide/tip.html">TOOLTIP</a></li>
+					<li><a href="/publish/smr/guide/complete.html">완료/오류</a></li>
+					<li><a href="/publish/smr/guide/guide.html">GUIDE UI</a></li>
+					<li><a href="/publish/smr/guide/nodata.html">NODATA</a></li>
+					<li><a href="/publish/smr/guide/terms.html">약관동의</a></li>
+					<li><a href="/publish/smr/guide/alert.html">ALERT POPUP</a></li>
+					<li><a href="/publish/smr/guide/layer.html">LAYER POPUP</a></li>
+					<li><a href="/publish/smr/guide/swiper.html">SWIPER</a></li>
+					<!-- <li><a href="/publish/smr/guide/senior.html">시니어</a></li> -->
+					<!-- <li><a href="/publish/smr/guide/senior_tab.html">시니어-TAB</a></li> -->
+					<li><a href="./list/sampleList.html">샘플페이지</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">senior 가이드</a>
+
+				<ul class="depth02">
+					<!-- <li><a href="/publish/smr/guide/cmn.html">COMMON</a></li> -->
+					<li><a href="/publish/smr/guide/senior/senior.html">COMMON</a></li>
+					<li><a href="/publish/smr/guide/senior/senior_button.html">BUTTON</a></li>
+					<li><a href="/publish/smr/guide/senior/senior_input.html">INPUT</a></li>
+					<li><a href="/publish/smr/guide/senior/senior_tab.html">TAB</a></li>
+					<li><a href="/publish/smr/guide/senior/senior_acc.html">ACCOUNT CARD</a></li>
+					<li><a href="/publish/smr/guide/senior/senior_tip.html">TOOLTIP</a></li>
+				</ul>
+			</li>
+			<li class="active">
+				<a href="#">컨텐츠 뷰</a>
+				<ul class="depth02">
+					<li><a href="./list/viewList_cmn.html">knsb.ui 예제</a></li>
+					<li><a href="./list/viewList14.html">컨텐츠 (23.12.01)</a></li>
+					<li><a href="./list/viewList00.html">공통 (23.12.01)</a></li>
+					<li><a href="./list/viewList01.html">메인 (23.11.30)</a></li>
+					<li><a href="./list/viewList02.html">시작하기 (23.11.29)</a></li>
+					<li><a href="./list/viewList03.html">로그인 (23.11.27)</a></li>
+					<li><a href="./list/viewList04.html">조회 (23.11.30)</a></li>
+					<li><a href="./list/viewList05.html">이체 (23.11.28)</a></li>
+					<li><a href="./list/viewList06.html">뱅킹서비스 (23.12.01)</a></li>
+					<li><a href="./list/viewList07.html">상품관리 (23.11.30)</a></li>
+					<li><a href="./list/viewList08.html">인증/보안 (23.11.28)</a></li>
+					<li><a href="./list/viewList09.html">알림함 (23.11.29)</a></li>
+					<li><a href="./list/viewList10.html">설정 (23.11.30)</a></li>
+					<li><a href="./list/viewList11.html">큰글씨 (23.11.30)</a></li>
+					<li><a href="./list/viewList12.html">전체메뉴 (23.11.27)</a></li>
+					<li><a href="./list/viewList13.html">MY PAGE (23.11.27)</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">ASIS</a>
+
+				<ul class="depth02">
+					<li><a href="../asis/button.html">BUTTON</a></li>
+					<li><a href="../asis/accordion.html">ACCORDION</a></li>
+					<li><a href="../asis/layer.html">LAYER</a></li>
+					<li><a href="../asis/input.html">INPUT</a></li>
+					<li><a href="../asis/check.html">RADIO/CHECK</a></li>
+					<li><a href="./list/maintain.html">퍼블수정 화면목록</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="/publish/smr/dcr/fileList/index.html" class="link">전자증명서</a>
+			</li>
+			
+		</ul>
+
+
+
+	</nav>
+	
+</body>
+</html>

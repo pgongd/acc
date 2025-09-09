@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">조회</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>기획 버전</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<script type="text/javascript">
+
+					// viewtitle('');
+					// viewtitle02('');
+					
+					viewtitle('공통');
+					viewlist('거래내역검색', '/publish/smr/view/inq/SBPINQS00INQV00P.html', '2023-10-12', 'O', '송나영','v1.10','');
+					viewlist('조회조건설정', '/publish/smr/view/inq/SBPINQS00INQV00P_02.html', '2023-08-23', 'O', '송나영','v1.10','');
+					viewlist('조회조건설정 > 조회 기준년도 선택[팝업]', '/publish/smr/view/inq/SBPINQS00INQV00P_03.html', '2023-10-20', 'O', '서현호','v1.10','');
+					viewlist('계좌설정', '/publish/smr/view/inq/SBPINQS00INQV00P_04.html', '2023-10-12', 'O', '송나영','v1.10','');
+					viewlist('계좌순서변경', '/publish/smr/view/inq/SBPINQS50CHGV00P.html', '2023-08-01', 'O', '송나영','v1.10','');
+					viewlist('계좌순서변경 > 계좌순서변경_다른금융', '/publish/smr/view/inq/SBPINQS50CHGV01P.html', '2023-10-27', 'O', '송나영','v1.10','');
+					viewlist('총잔액합계(경남은행)', '/publish/smr/view/inq/SBPINQS10IDXV00M_02.html', '2023-09-18', 'O', '하유희','v1.10','');
+					viewlist('총잔액합계(다른금융)', '/publish/smr/view/inq/SBPINQS10IDXV00M_03.html', '2023-09-18', 'O', '서현호','v1.10','');
+
+					viewtitle('전체계좌조회');
+					// viewlist('전체(경남은행) > 전체(경남은행)목록', '/publish/smr/view/inq/SBPINQS10IDXV00M.html', '2023-09-18', 'O', '송나영','v1.10','');
+					viewlist('전체(경남은행) > 전체(경남은행)목록[스켈레톤]', '/publish/smr/view/inq/SBPINQS10IDXV00M_05.html', '2023-10-11', 'O', '서현호','v1.10','');
+					viewlist('전체(경남은행) 목록', '/publish/smr/view/inq/SBPINQS10LSTV00T.html', '2023-09-18', 'O', '송나영','v1.10','');
+					viewlist('전체(다른금융) 목록', '/publish/smr/view/inq/SBPINQS10LSTV01T.html', '2023-09-18', 'O', '송나영','v1.10','');
+					viewlist('전체 목록 - 총잔액숨김', '/publish/smr/view/inq/SBPINQS10LSTV00T_02.html', '2023-11-06', 'O', '송나영','v1.17','');
+					viewlist('전체(다른금융) > 오픈뱅킹가입하기-미가입자', '/publish/smr/view/inq/SBPINQS10LSTV01T_02.html', '2023-09-18', 'O', '송나영','v1.10','');
+					viewlist('보험계약조회 > 목록 > 보험계약조회', '/publish/smr/view/inq/SBPINQS30DETV00M.html', '2023-10-16', 'O', '송나영','v1.10','');
+					viewlist('보험계약조회 > 생명보험상세 > 생명보험상세', '/publish/smr/view/inq/SBPINQS30MNGV10P.html', '2023-10-16', 'O', '송나영','v1.10','');
+					viewlist('보험계약조회 > 손해보험상세 > 손해보험상세', '/publish/smr/view/inq/SBPINQS30MNGV11P.html', '2023-09-18', 'O', '송나영','v1.10','');
+					viewlist('전체(다른금융) > 목록 > 카드 이용대금명세서 조회', '/publish/smr/view/inq/SBPINQS42LSTV00M.html', '2023-09-26', 'O', '송나영','v1.10','');
+					viewlist('전체(다른금융) > 목록 > 카드 이용대금명세서 거래내역조회', '/publish/smr/view/inq/SBPINQS42LSTV10M.html', '2023-09-26', 'O', '송나영','v1.10','');
+					viewlist('전체(다른금융) > 목록 > 핀테크 선불계정조회', '/publish/smr/view/inq/SBPINQS43LSTV00M.html', '2023-09-26', 'O', '송나영','v1.10','');
+					viewlist('전체(다른금융) > 목록 > 핀테크 선불계정 거래내역조회', '/publish/smr/view/inq/SBPINQS43LSTV10M.html', '2023-09-26', 'O', '송나영','v1.10','');
+					viewlist('전체(다른금융) > 보험 > 보험조회 상세', '/publish/smr/view/inq/SBPINQS43DETV00P.html', '2023-10-12', 'O', '송나영','v1.10','');
+					viewlist('전체(다른금융) > 목록 > 캐피탈', '/publish/smr/view/inq/SBPINQS20LSTV00M_capital.html', '2023-10-12', 'O', '송나영','v1.10','');
+					
+					viewtitle('거래내역조회');
+					viewlist('펀드 > 계좌관리 > 거래내역펀드계좌관리예정목록', '/publish/smr/view/inq/SBPINQS10LSTV12P.html', '2023-10-16', 'O', '송나영','v1.10','');
+					// viewlist('예금 > 입출금 > 계좌정보관리-스켈레톤', '/publish/smr/view/inq/SBPINQS10MNGV10M_load.html', '2023-12-01', 'O', '서현호','v1.10','');
+					viewlist('예금 > 입출금 > 계좌정보관리-입출금', '/publish/smr/view/inq/SBPINQS10MNGV10M.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('예금 > 입출금 > 계좌정보관리-현금/체크카드[팝업]', '/publish/smr/view/inq/SBPINQS10MNGV10M_02.html', '2024-01-22', 'O', '서현호','','');
+					viewlist('예금 > 적금 > 계좌정보관리-적금', '/publish/smr/view/inq/SBPINQS10MNGV11M.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('예금 > 적금 > 계좌정보관리-예금', '/publish/smr/view/inq/SBPINQS10MNGV11M_02.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('펀드 > 계좌관리 > 계좌정보관리-펀드', '/publish/smr/view/inq/SBPINQS10MNGV12M.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('대출 > 계좌관리 > 계좌정보관리-대출일시일대', '/publish/smr/view/inq/SBPINQS10MNGV13M.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('대출 > 계좌관리 > 계좌정보관리-대출할부/분할', '/publish/smr/view/inq/SBPINQS10MNGV14M.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('대출 > 계좌관리 > 계좌정보관리-대출종합통장대출', '/publish/smr/view/inq/SBPINQS10MNGV15M.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('신탁 > 계좌관리 > 계좌정보관리-신탁', '/publish/smr/view/inq/SBPINQS10MNGV16M.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('외환 > 계좌관리 > 계좌정보관리-외환요구불', '/publish/smr/view/inq/SBPINQS10MNGV17M.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('외환 > 계좌관리 > 계좌정보관리-외환예금', '/publish/smr/view/inq/SBPINQS10MNGV18M.html', '2023-10.23', 'O', '송나영','v1.10','');
+					viewlist('퇴직연금 > 계좌관리 > 계좌정보관리-퇴직연금', '/publish/smr/view/inq/SBPINQS10MNGV19M.html', '2023-10-25', 'O', '송나영','v1.12','');
+					viewlist('예금 > 입출금 > 거래내역상세-입출금이체거래', '/publish/smr/view/inq/SBPINQS20DETV10P.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('펀드 > 상세 > 거래내역상세-펀드', '/publish/smr/view/inq/SBPINQS20DETV11P.html', '2023-10-16', 'O', '송나영','v1.10','');
+					viewlist('대출 > 상세 > 거래내역상세-일시일대', '/publish/smr/view/inq/SBPINQS20DETV13P.html', '2023-09-18', 'O', '송나영','v1.10','');
+					viewlist('신탁 > 상세 > 거래내역상세-신탁', '/publish/smr/view/inq/SBPINQS20DETV16P.html', '2023-10-16', 'O', '송나영','v1.10','');
+					viewlist('외환 > 상세 > 거래내역상세-외환요구불', '/publish/smr/view/inq/SBPINQS20DETV17P.html', '2023-10-16', 'O', '송나영','v1.10','');
+					viewlist('퇴직연금 > 상세 > 거래내역상세-퇴직연금', '/publish/smr/view/inq/SBPINQS20DETV19P.html', '2023-10-16', 'O', '송나영','v1.10','');
+					viewlist('입출금 > 목록 > 거래내역목록-스켈레톤', '/publish/smr/view/inq/SBPINQS20LSTV00M_load.html', '2023-12-01', 'O', '서현호','','');
+					viewlist('입출금 > 목록 > 거래내역목록-입출금', '/publish/smr/view/inq/SBPINQS20LSTV00M.html', '2023-11-07', 'O', '송나영','v1.10','');
+					viewlist('예적금 > 목록 > 거래내역목록-예적금', '/publish/smr/view/inq/SBPINQS20LSTV00M_dpo.html', '2023-11-07', 'O', '송나영','v1.10','');
+					viewlist('예적금 > 목록 > 거래내역목록-예적금(에그머니나)', '/publish/smr/view/inq/SBPINQS20LSTV00M_dpo02.html', '2023-11-09', 'O', '서현호','v1.10','');
+					viewlist('예적금 > 목록 > 거래내역목록-예적금(오늘도세이브)', '/publish/smr/view/inq/SBPINQS20LSTV00M_dpo03.html', '2023-11-09', 'O', '서현호','v1.10','');
+					viewlist('펀드 > 목록 > 거래내역목록-펀드', '/publish/smr/view/inq/SBPINQS20LSTV00M_fun.html', '2023-11-07', 'O', '송나영','v1.10','');
+					viewlist('대출 > 목록 > 거래내역목록-대출', '/publish/smr/view/inq/SBPINQS20LSTV00M_lon.html', '2023-11-07', 'O', '송나영','v1.10','');
+					viewlist('신탁 > 목록 > 거래내역목록-신탁', '/publish/smr/view/inq/SBPINQS20LSTV00M_trs.html', '2023-11-07', 'O', '송나영','v1.10','');
+					viewlist('외환 > 목록 > 거래내역목록-외환', '/publish/smr/view/inq/SBPINQS20LSTV00M_exc.html', '2023-11-07', 'O', '송나영','v1.10','');
+					viewlist('퇴직연금 > 목록 > 거래내역목록-퇴직연금', '/publish/smr/view/inq/SBPINQS20LSTV00M_ret.html', '2023-11-07', 'O', '송나영','v1.10','');
+					viewlist('예금 > 목록 > 거래내역달력-입출금', '/publish/smr/view/inq/SBPINQS20LSTV11P.html', '2023-10-23', 'O', '송나영','v1.10','');
+					viewlist('예금 > 목록 > 거래내역달력 > 년/월 선택[팝업]', '/publish/smr/view/inq/SBPINQS00INQV00P_05.html', '2023-10-20', 'O', '서현호','v1.10','');
+					viewlist('은행 > 목록 > 오픈뱅킹거래내역목록', '/publish/smr/view/inq/SBPINQS41LSTV00M.html', '2023-11-07', 'O', '송나영','v1.10','');
+
+					viewtitle('이체내역조회');
+					viewlist('이체내역조회', '/publish/smr/view/inq/SBPINQS60LSTV00M.html', '2023-10-25', 'O', '송나영','v1.13','');
+					viewlist('이체내역상세_즉시이체 > 이체내역상세_즉시이체', '/publish/smr/view/inq/SBPINQS60DETV10P.html', '2023-10-16', 'O', '송나영','v1.11','');
+					viewlist('이체내역상세_즉시이체 > 이체내역상세_즉시이체(반환완료)', '/publish/smr/view/inq/SBPINQS60DETV10P_02.html', '2023-10-25', 'O', '하유희','v1.11','');
+					viewlist('이체내역상세_예약이체 > 이체내역상세_예약이체', '/publish/smr/view/inq/SBPINQS60DETV11P.html', '2023-10-23', 'O', '송나영','v1.11','');
+					viewlist('이체내역상세_지연이체 > 이체내역상세_지연이체', '/publish/smr/view/inq/SBPINQS60DETV12P.html', '2023-10-16', 'O', '송나영','v1.11','');
+					viewlist('이체내역상세_연락처이체 > 이체내역상세_연락처이체', '/publish/smr/view/inq/SBPINQS60DETV13P.html', '2023-10-16', 'O', '송나영','v1.11','');
+
+					viewlist('이체취소확인_예약이체 > 이체취소확인_예약이체', '/publish/smr/view/inq/SBPINQS60DETV11P_02.html', '2023-09-20', 'O', '송나영','v1.11', '');
+					viewlist('이체취소확인_예약이체 - 이체취소 불가 안내', '/publish/smr/view/inq/SBPINQS60DETV11P_03.html', '2023-10-20', 'O', '송나영','v1.11','');
+					viewlist('이체취소확인_지연이체 > 이체취소확인_지연이체', '/publish/smr/view/inq/SBPINQS60DETV12P_02.html', '2023-09-20', 'O', '송나영','v1.11','');
+					viewlist('이체취소확인_연락처이체 > 이체취소확인_연락처이체', '/publish/smr/view/inq/SBPINQS60DETV13P_02.html', '2023-09-20', 'O', '송나영','v1.11','');
+
+					viewlist('이체취소완료_예약이체 > 이체취소완료_예약이체', '/publish/smr/view/inq/SBPINQS60FINV20M.html', '2023-09-20', 'O', '송나영','v1.11','');
+					viewlist('이체취소완료_지연이체 > 이체취소완료_지연이체', '/publish/smr/view/inq/SBPINQS60FINV21M.html', '2023-10-23', 'O', '송나영','v1.11','');
+					viewlist('이체취소완료_연락처이체 > 이체취소완료_연락처이체', '/publish/smr/view/inq/SBPINQS60FINV22M.html', '2023-10-23', 'O', '송나영','v1.11','');
+					
+					viewtitle('오픈뱅킹');
+					viewlist('자금반환신청 > 자금반환신청 계좌입력', '/publish/smr/view/opb/SBPOPBS33APLV00M.html', '2023-10-25', 'O', '하유희', 'v1.13', '');
+					viewlist('자금반환신청 > 자금반환신청완료', '/publish/smr/view/opb/SBPOPBS33FINV10M.html', '2023-10-25', 'O', '하유희', 'v1.13', '');
+					
+					viewtitle('계약내용조회');
+					viewlist('계약내용조회', '/publish/smr/view/inq/SBPINQS65DETV10P.html', '2023-09-22', 'O', '송나영','v1.11','');
+					viewlist('계약내용조회_펀드[팝업]', '/publish/smr/view/inq/SBPINQS65DETV10P_02.html', '2023-09-22', 'O', '송나영','v1.11','');
+					viewlist('계약내용조회_상세', '/publish/smr/view/inq/SBPINQS65LSTV00M.html', '2023-08-11', 'O', '송나영','v1.11','');
+
+					viewtitle('계좌통합관리서비스');
+					viewlist('계좌통합관리서비스해지완료', '/publish/smr/view/inq/SBPINQS70FINV40M.html', '2023-09-19', 'O', '송나영','v1.11','');
+					viewlist('계좌통합관리서비스가입안내', '/publish/smr/view/inq/SBPINQS70GUDV10M.html', '2023-10-16', 'O', '송나영','v1.11','');
+					viewlist('계좌통합관리목록', '/publish/smr/view/inq/SBPINQS70LSTV30M.html', '2023-10-16', 'O', '송나영','v1.11','');
+					viewlist('계좌통합관리약관동의', '/publish/smr/view/inq/SBPINQS70TERV20M.html', '2023-10-16', 'O', '송나영','v1.11','');
+
+
+
+
+
+					</script>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+			</div>
+
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+
+</body>
+</html>

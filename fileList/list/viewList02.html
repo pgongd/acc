@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">시작하기</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>기획 버전</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<script type="text/javascript">
+
+					
+
+					viewlist('MO인증', '/publish/smr/view/lgi/SBPLGIS00CERV00M.html', '2023-10-18', 'O', '서현호', 'v1.08', '');
+					viewlist('휴대폰인증', '/publish/smr/view/lgi/SBPLGIS00CERV10M.html', '2023-09-22', 'O', '서현호', 'v1.08', '');
+					viewlist('휴대폰인증(input error)', '/publish/smr/view/lgi/SBPLGIS00CERV10M_02.html', '2023-09-22', 'O', '서현호', 'v1.08', '');
+					viewlist('휴대폰인증(약관동의)', '/publish/smr/view/lgi/SBPLGIS00CERV10M_03.html', '2023-09-22', 'O', '서현호', 'v1.08', '');
+					viewlist('단기간다수계좌안내', '/publish/smr/view/lgi/SBPLGIS10GUDV01M.html', '2023-08-17', 'O', '서현호', 'v1.08', '');
+					viewlist('단기간다수계좌안내 > 알림받기', '/publish/smr/view/lgi/SBPLGIS10GUDV01M_02.html', '2023-10-19', 'O', '서현호', 'v1.08', '');
+					viewlist('개인정보노출자안내', '/publish/smr/view/lgi/SBPLGIS10GUDV02M.html', '2023-09-26', 'O', '서현호', 'v1.08', '');
+					viewlist('서비스가입불가안내', '/publish/smr/view/lgi/SBPLGIS10GUDV03M.html', '2023-09-26', 'O', '서현호', 'v1.08', '');
+					viewlist('미성년자불가안내', '/publish/smr/view/lgi/SBPLGIS10GUDV03M_02.html', '2023-09-26', 'O', '서현호', 'v1.08', '');
+					viewlist('외국인불가안내', '/publish/smr/view/lgi/SBPLGIS10GUDV03M_03.html', '2023-09-26', 'O', '서현호', 'v1.08', '');
+					viewlist('영상통화불가안내', '/publish/smr/view/lgi/SBPLGIS10GUDV03M_04.html', '2023-09-26', 'O', '서현호', 'v1.08', '');
+					viewlist('원장정보불일치', '/publish/smr/view/lgi/SBPLGIS10GUDV04M.html', '2023-09-26', 'O', '서현호', 'v1.08', '');
+					viewlist('출금계좌선택', '/publish/smr/view/lgi/SBPLGIS50REGV10M.html', '2023-09-26', 'O', '서현호', 'v1.08', '');
+
+					viewtitle('계좌개설');
+					viewlist('서비스가입안내', '/publish/smr/view/lgi/SBPLGIS10GUDV00M.html', '2023-10-18', 'O', '서현호', 'v1.08', '');
+					viewlist('가입상품안내', '/publish/smr/view/lgi/SBPLGIS10GUDV10M.html', '2023-10-30', 'O', '서현호', 'v1.08', '');
+					viewlist('약관동의', '/publish/smr/view/lgi/SBPLGIS10TERV20M.html', '2023-10-11', 'O', '서현호', 'v1.08', '');
+					viewlist('약관동의(놓치지마세요)', '/publish/smr/view/lgi/SBPLGIS10TERV20M_02.html', '2023-09-25', 'O', '서현호', 'v1.08', '');
+					viewlist('약관동의(상품 주요 내용 확인)', '/publish/smr/view/lgi/SBPLGIS10TERV20M_03.html', '2023-12-26', 'O', '서현호', 'v1.13', '');
+					viewlist('영문성명입력', '/publish/smr/view/lgi/SBPLGIS10IPTV30M.html', '2023-09-25', 'O', '서현호', 'v1.08', '');
+					viewlist('이메일주소입력', '/publish/smr/view/lgi/SBPLGIS10IPTV40M.html', '2023-10-11', 'O', '서현호', 'v1.08', '');
+					viewlist('자택주소입력', '/publish/smr/view/lgi/SBPLGIS10IPTV50M.html', '2023-09-25', 'O', '서현호', 'v1.08', '');
+					viewlist('직업정보입력(개인)', '/publish/smr/view/lgi/SBPLGIS10IPTV60M.html', '2023-09-25', 'O', '서현호', 'v1.08', '');
+					viewlist('직업정보입력(사업자)', '/publish/smr/view/lgi/SBPLGIS10IPTV60M_02.html', '2023-09-25', 'O', '서현호', 'v1.08', '');
+					viewlist('직업정보입력 > 가상자산사업자 안내[팝업]', '/publish/smr/view/lgi/SBPLGIS10IPTV60M_03.html', '2023-10-11', 'O', '서현호', 'v1.08', '');
+					viewlist('필수정보입력', '/publish/smr/view/lgi/SBPLGIS10IPTV70M.html', '2023-09-25', 'O', '서현호', 'v1.08', '');
+					viewlist('고객정보확인사항', '/publish/smr/view/lgi/SBPLGIS10IPTV80M.html', '2023-09-25', 'O', '서현호', 'v1.08', '');
+					viewlist('고객정보확인사항 > 본인사용계좌 안내[팝업]', '/publish/smr/view/lgi/SBPLGIS10IPTV80M_02.html', '2023-10-11', 'O', '서현호', 'v1.08', '');
+					viewlist('고객정보확인사항 > 납세의무자 안내[팝업]', '/publish/smr/view/lgi/SBPLGIS10IPTV80M_03.html', '2023-10-11', 'O', '서현호', 'v1.08', '');
+					viewlist('상품가입정보확인', '/publish/smr/view/lgi/SBPLGIS10JNGV90M.html', '2023-10-19', 'O', '서현호', 'v1.08', '');
+					// viewlist('서명', '/publish/smr/view/lgi/SBPLGIS10CERV90P.html', '2023-09-25', 'O', '서현호', 'v1.08', '');
+					viewlist('서명- 설명, 계약서류 받기', '/publish/smr/view/lgi/SBPLGIS20JNGV70P.html', '2023-11-06', 'O', '송나영', 'v1.08', '');
+					viewlist('신규계좌개설 계약서 미리보기', '/publish/smr/view/lgi/SBPLGIS20JNGV70P_02.html', '2023-11-06', 'O', '송나영', 'v1.08', '');
+
+					viewtitle('보안매체등록');
+					viewlist('보안매체등록 > 타행디지털OTP신고자안내', '/publish/smr/view/lgi/SBPLGIS20GUDV11M.html', '2023-10-19', 'O', '서현호', 'v1.08', '');
+					viewlist('보안매체등록', '/publish/smr/view/lgi/SBPLGIS20REGV00M.html', '2023-10-19', 'O', '서현호', 'v1.08', '');
+					viewlist('보안매체확인(정상)-보안카드', '/publish/smr/view/lgi/SBPLGIS20REGV01M.html', '2023-10-19	', 'O', '서현호', 'v1.08', '');
+					viewlist('보안매체확인(정상)-OTP', '/publish/smr/view/lgi/SBPLGIS20REGV01M_03.html', '2023-11-23', 'O', '서현호', 'v1.08', '');
+					viewlist('보안매체확인(정상)-디지털OTP안내', '/publish/smr/view/lgi/SBPLGIS20REGV01M_02.html', '2023-10-19', 'O', '서현호', 'v1.08', '');
+					viewlist('디지털OTP영업점발급', '/publish/smr/view/lgi/SBPLGIS20REGV02M.html', '2023-10-19', 'O', '서현호', 'v1.08', '');
+					viewlist('보안매체등록 > 타행OTP선택', '/publish/smr/view/lgi/SBPLGIS20REGV12M.html', '2023-10-19', 'O', '서현호', 'v1.08', '');
+					
+					viewtitle('가입완료');
+					viewlist('신규가입완료', '/publish/smr/view/lgi/SBPLGIS30FINV10M.html', '2023-10-30', 'O', '서현호', 'v1.08', '');
+					viewlist('신규가입완료 > 약관다운로드', '/publish/smr/view/lgi/SBPLGIS30TERV20M.html', '2023-09-12', 'O', '서현호', 'v1.08', '');
+					viewlist('기존회원가입완료', '/publish/smr/view/lgi/SBPLGIS30FINV10M_02.html', '2023-10-30', 'O', '서현호', 'v1.08', '');
+					viewlist('기존회원가입완료', '/publish/smr/view/lgi/SBPLGIS30FINV10M_03.html', '2023-10-30', 'O', '서현호', 'v1.08', '');
+					viewlist('기존회원가입완료', '/publish/smr/view/lgi/SBPLGIS30FINV10M_04.html', '2023-10-30', 'O', '서현호', 'v1.08', '');
+					
+					viewtitle('모바일인증등록');
+					viewlist('모바일인증등록안내', '/publish/smr/view/lgi/SBPLGIS30REGV00M.html', '2023-09-12', 'O', '서현호', 'v1.08', '');
+					viewlist('모바일인증약관동의', '/publish/smr/view/lgi/SBPLGIS30TERV10M.html', '2023-08-17', 'O', '서현호', 'v1.08', '');
+					viewlist('본인계좌인증', '/publish/smr/view/lgi/SBPLGIS30REGV00M_02.html', '2023-09-12', 'O', '서현호', 'v1.08', '');
+					
+					viewtitle('전자금융이용');
+					viewlist('전자금융이용안내', '/publish/smr/view/lgi/SBPLGIS40GUDV00M.html', '2023-08-17', 'O', '서현호', 'v1.08', '');
+					viewlist('전자금융약관동의', '/publish/smr/view/lgi/SBPLGIS40TERV10M.html', '2023-08-17', 'O', '서현호', 'v1.08', '');
+					viewlist('CDD', '/publish/smr/view/lgi/SBPLGIS40TERV10M_02.html', '2024-01-08', 'O', '서현호', 'v1.08', '');
+					viewlist('EDD', '/publish/smr/view/lgi/SBPLGIS40TERV10M_03.html', '2024-01-08', 'O', '서현호', 'v1.08', '');
+					viewlist('출금계좌권한신청', '/publish/smr/view/lgi/SBPLGIS40GUDV00M_02.html', '2023-08-17', 'O', '서현호', 'v1.08', '');
+					viewlist('출금계좌선택', '/publish/smr/view/lgi/SBPLGIS40GUDV00M_03.html', '2023-08-17', 'O', '서현호', 'v1.08', '');
+					
+					viewtitle('체크카드발급');
+					viewlist('체크카드상품안내', '/publish/smr/view/lgi/SBPLGIS13GUDV00M.html', '2023-10-25', 'O', '서현호', 'v0.8', '');
+					viewlist('체크카드발급약관동의', '/publish/smr/view/lgi/SBPLGIS13TERV10M.html', '2023-10-25', 'O', '서현호', 'v0.8', '');
+					viewlist('카드정보입력', '/publish/smr/view/lgi/SBPLGIS13IPTV20M.html', '2023-10-26', 'O', '서현호', 'v0.8', '');
+					viewlist('카드정보입력 - 발급카드선택[팝업]', '/publish/smr/view/lgi/SBPLGIS13IPTV20M_02.html', '2023-12-29', 'O', '서현호', 'v0.8', '');
+					viewlist('카드발급정보확인', '/publish/smr/view/lgi/SBPLGIS13APLV30M.html', '2023-10-25', 'O', '서현호', 'v0.8', '');
+					viewlist('비씨카드신청서', '/publish/smr/view/lgi/SBPLGIS13APLV30P.html', '2023-10-25', 'O', '서현호', 'v0.8', '');
+					viewlist('카드신청완료[자동발급대상]', '/publish/smr/view/lgi/SBPLGIS13FINV40M.html', '2023-10-25', 'O', '서현호', 'v0.8', '');
+					viewlist('카드신청완료[자동발급대상 외]', '/publish/smr/view/lgi/SBPLGIS13FINV40M_02.html', '2023-10-25', 'O', '서현호', 'v0.8', '');
+					viewlist('카드신청완료[발급불가]', '/publish/smr/view/lgi/SBPLGIS13FINV40M_03.html', '2023-10-25', 'O', '서현호', 'v0.8', '');
+					viewlist('카드신청오류', '/publish/smr/view/lgi/SBPLGIS13FINV41M.html', '2023-10-25', 'O', '서현호', 'v0.8', '');
+					viewlist('약관다운로드', '/publish/smr/view/lgi/SBPLGIS13FINV40M_04.html', '2023-12-29', 'O', '서현호', 'v0.8', '');
+
+
+	
+	
+					</script>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+			</div>
+
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+
+</body>
+</html>

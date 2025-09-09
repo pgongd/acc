@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">메인</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+	
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>기획 버전</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<script type="text/javascript">
+						
+						
+						viewtitle('대표계좌설정');
+						viewlist('대표계좌설정', '/publish/smr/view/svm/SBPSVMS10SETV00P.html', '2023-10-27', 'O', '서현호',  'v1.02',  '');
+						
+						viewtitle('메인');
+						viewlist('생일축하 쿠폰[팝업]', '/publish/smr/view/svm/SBPCOMS40REGV00M.html', '2023-12-12', 'O', '서현호',  '',  '');
+						viewlist('CDD/EDD 이행도래[팝업] - 마케팅 동의 신청/변경/철회', '/publish/smr/view/svm/SBPCOM_marketing.html', '2023-12-13', 'O', '서현호',  '',  '');
+						viewlist('CDD/EDD 이행도래[팝업] - 고객정보 재확인 기간', '/publish/smr/view/svm/SBPCOM_reconfirm.html', '2023-12-13', 'O', '서현호',  '',  '');
+						viewlist('긴급팝업/공지사항[팝업]', '/publish/smr/view/svm/SBPCOM_board.html', '2023-12-13', 'O', '서현호',  '',  '');
+						viewlist('개인정보 노출자[팝업]', '/publish/smr/view/svm/SBPCOM_exposure.html', '2023-12-13', 'O', '서현호',  '',  '');
+						viewlist('착오송금반환[팝업]', '/publish/smr/view/svm/SBPCOM_board02.html', '2023-12-13', 'O', '서현호',  '',  '');
+						
+						viewtitle02('메인 - 팝업[개발 대응]');
+						viewlist('CDD/EDD 이행도래[팝업] - 마케팅 동의 신청/변경/철회', '/publish/smr/view/svm/SBPCOM_marketing_02.html', '2023-12-13', 'O', '서현호',  '',  '');
+						viewlist('CDD/EDD 이행도래[팝업] - 고객정보 재확인 기간', '/publish/smr/view/svm/SBPCOM_reconfirm_02.html', '2023-12-13', 'O', '서현호',  '',  '');
+						viewlist('긴급팝업/공지사항[팝업]', '/publish/smr/view/svm/SBPCOM_board_02.html', '2023-12-13', 'O', '서현호',  '',  '');
+						viewlist('개인정보 노출자[팝업]', '/publish/smr/view/svm/SBPCOM_exposure_02.html', '2023-12-13', 'O', '서현호',  '',  '');
+						viewlist('착오송금반환[팝업]', '/publish/smr/view/svm/SBPCOM_board02_02.html', '2023-12-13', 'O', '서현호',  '',  '');
+						
+						viewtitle('메인이체');
+						viewlist('자주/최근사용계좌선택', '/publish/smr/view/svm/SBPSVMS20DSAV00P.html', '2023-10-27', 'O', '서현호',  'v1.02',  '');
+						viewlist('자주/최근사용계좌선택(조회결과X)', '/publish/smr/view/svm/SBPSVMS20DSAV00P_02.html', '2023-10-10', 'O', '서현호',  'v1.02',  '');
+						viewlist('보이스피싱주의안내', '/publish/smr/view/svm/SBPSVMS20GUDV10P.html', '2023-10-10', 'O', '서현호',  'v1.02',  '');
+						viewlist('지연이체서비스안내', '/publish/smr/view/svm/SBPSVMS20GUDV10P_02.html', '2023-10-17', 'O', '서현호',  'v1.02',  '');
+						viewlist('입금지정계좌서비스안내', '/publish/smr/view/svm/SBPSVMS20GUDV10P_03.html', '2023-10-17', 'O', '서현호',  'v1.02',  '');
+						viewlist('이체한도 초과 안내', '/publish/smr/view/svm/SBPSVMS20GUDV10P_04.html', '2023-10-17', 'O', '서현호',  'v1.02',  '');
+						viewlist('해외IP 이용제한안내', '/publish/smr/view/svm/SBPSVMS20GUDV10P_06.html', '2023-10-17', 'O', '서현호',  'v1.02',  '');
+						viewlist('미등록기기이체제한안내', '/publish/smr/view/svm/SBPSVMS20GUDV10P_05.html', '2023-10-17', 'O', '서현호',  'v1.02',  '');
+						viewlist('이체정보확인 > 출국정보시스템 동의 안내', '/publish/smr/view/svm/SBPSVMS20GUDV40P.html', '2023-10-10', 'O', '서현호',  'v1.02',  '');
+						viewlist('이체정보확인 > 적요입력', '/publish/smr/view/svm/SBPSVMS20IPTV30P.html', '2023-10-10', 'O', '서현호',  'v1.02',  '');
+						viewlist('이체정보확인', '/publish/smr/view/svm/SBPSVMS20TRFV20P.html', '2023-10-10', 'O', '서현호',  'v1.02',  '');
+						viewlist('이체완료', '/publish/smr/view/svm/SBPSVMS20FINV50P.html', '2023-10-10', 'O', '서현호',  'v1.02',  '');
+						viewlist('이체완료(오류)', '/publish/smr/view/svm/SBPSVMS20FINV50P_02.html', '2023-09-25', 'O', '서현호',  'v1.02',  '');
+						
+						
+					</script>
+	
+				</tbody>
+	
+			</table>
+		</div>
+	</div>
+	
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+	
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+			</div>
+	
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+</body>
+</html>

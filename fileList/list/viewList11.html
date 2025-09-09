@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">큰글씨</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>   
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>기획 버전</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<script type="text/javascript">
+
+					// viewtitle('');
+					// viewtitle02('');
+					viewlist('조회조건 설정', '/publish/smr/view/blb/SBPBLB_setInq.html', '2023-12-20', 'O', '송나영','v1.02','');
+					viewlist('검색어입력', '/publish/smr/view/blb/SBPBLB_inpSch.html', '2023-12-20', 'O', '송나영','v1.02','');
+					viewlist('메모관리', '/publish/smr/view/blb/SBPBLB_memo.html', '2023-01-02', 'O', '하유희','v1.02','');
+
+					viewtitle('메인');
+					viewtitle02('계좌설정');
+					viewlist('첫계좌설정 > 메인(쉬운홈)_첫계좌설정', '/publish/smr/view/blb/SBPBLBS00SETV00P.html', '2023-10-10', 'O', '서현호','v1.02','');
+					viewlist('첫계좌설정 > 메인(쉬운홈)_첫계좌설정(계좌 순서바꾸기)', '/publish/smr/view/blb/SBPBLBS00SETV00P_02.html', '2023-10-10', 'O', '서현호','v1.02','');
+					// viewlist('첫계좌설정 > 계좌 순서바꾸기안내팝업', '/publish/smr/view/blb/SBPBLBS00SETV00P_07.html', '2023-11-02', 'O', '서현호','v1.02','');
+					viewtitle02('이체');
+					viewlist('지연이체안내', '/publish/smr/view/blb/SBPBLBS00SETV00P_03.html', '2023-10-19', 'O', '서현호','v1.02','');
+					viewlist('이체한도초과안내', '/publish/smr/view/blb/SBPBLBS00SETV00P_04.html', '2023-10-19', 'O', '서현호','v1.02','');
+					viewlist('입금지정계좌서비스안내', '/publish/smr/view/blb/SBPBLBS00SETV00P_05.html', '2023-10-19', 'O', '서현호','v1.02','');
+					viewlist('미등록기기 이체 제한 안내', '/publish/smr/view/blb/SBPBLBS00SETV00P_06.html', '2023-10-19', 'O', '서현호','v1.02','');
+
+					viewtitle('이체');
+					viewlist('이체 금액 입력', '/publish/smr/view/blb/SBPBLBS10IPTV00M.html', '2023-10-16', 'O', '서현호','v1.07','');
+					viewlist('이체 금액 입력 (error)', '/publish/smr/view/blb/SBPBLBS10IPTV00M_02.html', '2023-09-22', 'O', '서현호','v1.07','');
+					// viewlist('이체 금액 입력 (MMT)', '/publish/smr/view/blb/SBPBLBS10IPTV00M_03.html', '2023-10-10', 'O', '서현호','v1.03','');
+					viewlist('이체 계좌 선택 > 이체 계좌선택', '/publish/smr/view/blb/SBPBLBS10IPTV10M.html', '2023-11-03', 'O', '하유희','v1.07','');
+					viewlist('이체 계좌 선택 > 입금지정 > 이체 계좌선택', '/publish/smr/view/blb/SBPBLBS10IPTV10M_02.html', '2023-11-03', 'O', '하유희','v1.07','');
+					viewlist('이체 계좌 선택 > 최근 > 이체 계좌선택', '/publish/smr/view/blb/SBPBLBS10IPTV10M_03.html', '2023-11-03', 'O', '하유희','v1.07','');
+					viewlist('이체 계좌 선택 > 자주 > 이체 계좌선택', '/publish/smr/view/blb/SBPBLBS10IPTV10M_04.html', '2023-11-03', 'O', '하유희','v1.07','');
+					viewlist('이체 계좌 선택 > 내계좌 > 이체 계좌선택', '/publish/smr/view/blb/SBPBLBS10IPTV10M_05.html', '2023-11-03', 'O', '하유희','v1.07','');
+//					viewlist('이체 계좌 선택 > 계좌번호 직접 입력 > 계좌번호 직접 입력', '/publish/smr/view/blb/SBPBLBS10IPTV11M.html', '2023-08-10', 'O', '하유희','v1.07','');
+					viewlist('이체 계좌 선택 > 계좌번호 직접 입력 > 계좌번호 예금주 확인', '/publish/smr/view/blb/SBPBLBS10IPTV11M_02.html', '2023-11-03', 'X', '하유희','v1.07','');
+					viewlist('이체 입력 정보 확인 > 이체 입력 정보 확인', '/publish/smr/view/blb/SBPBLBS10TRFV20M.html', '2023-10-16', 'O', '하유희','v1.07','');
+					viewlist('이체 입력 정보 확인 > 최종이체정보 확인', '/publish/smr/view/blb/SBPBLBS10TRFV20M_02.html', '2023-10-10', 'O', '하유희','v1.07','');
+					viewlist('이체 완료', '/publish/smr/view/blb/SBPBLBS10FINV30M.html', '2023-10-16', 'O', '하유희','v1.07','');
+					viewlist('이체 실패', '/publish/smr/view/blb/SBPBLBS10FINV30M_03.html', '2023-10-16', 'O', '하유희','v1.07','');
+					viewlist('이체 완료(지연이체 case01)', '/publish/smr/view/blb/SBPBLBS10FINV30M_04.html', '2023-10-19', 'O', '서현호','v1.07','');
+					viewlist('이체 완료(지연이체 case02)', '/publish/smr/view/blb/SBPBLBS10FINV30M_05.html', '2023-10-19', 'O', '서현호','v1.07','');
+					viewlist('이체 완료 상세정보', '/publish/smr/view/blb/SBPBLBS10FINV30M_02.html', '2023-10-13', 'O', '하유희','v1.07','');
+					viewlist('국세/국고금/지방세입 > 이체 입력 정보 확인(국세/국고금/지방세입)', '/publish/smr/view/blb/SBPBLBS13TRFV41M.html', '2023-09-22', 'O', '하유희','v1.07','');
+					viewlist('국세/국고금/지방세입 > 이체 입력 정보 확인 금액 부족(국세/국고금/지방세입)', '/publish/smr/view/blb/SBPBLBS13TRFV41M_02.html', '2023-10-16', 'O', '하유희','v1.07','');
+					viewlist('국세/국고금/지방세입 > 이체 완료(국세/국고금/지방세입)', '/publish/smr/view/blb/SBPBLBS13FINV31M.html', '2023-09-22', 'O', '하유희','v1.07','');
+					viewlist('MMT > 이체 입력 정보 확인(MMT)', '/publish/smr/view/blb/SBPBLBS14FINV32M.html', '2023-10-10', 'O', '하유희','v1.07','');
+					viewlist('MMT > 이체 완료(MMT)', '/publish/smr/view/blb/SBPBLBS14FINV33M.html', '2023-10-16', 'O', '하유희','v1.07','');
+
+					
+					viewtitle('전체계좌조회');
+					viewlist('전체(경남은행) > 전체 계좌 목록', '/publish/smr/view/blb/SBPBLBS20LSTV00M.html', '2023-10-26', 'O', '서현호','v1.13','');
+					viewlist('전체(경남은행) > 전체 계좌 목록(스켈레톤)', '/publish/smr/view/blb/SBPBLBS20LSTV00M_02.html', '2023-10-12', 'O', '서현호','v1.13','');
+					viewlist('전체(다른금융) > 카드 > 이용대금명세서조회 > 카드이용대금명세서 조회', '/publish/smr/view/blb/SBPBLBS51LSTV00M.html', '2023-09-26', 'O', '하유희','v1.13','');
+					viewlist('전체(다른금융) > 카드 > 이용대금명세서조회 > 카드 이용대금명세서 상세', '/publish/smr/view/blb/SBPBLBS51LSTV10M.html', '2023-09-26', 'O', '하유희','v1.13','');
+					viewlist('전체(다른금융) > 핀테크 > 선불계정조회 > 핀테크 선불계정조회', '/publish/smr/view/blb/SBPBLBS52LSTV00M.html', '2023-10-16', 'O', '하유희','v1.13','');
+					viewlist('전체(다른금융) > 핀테크 > 선불계정거래내역조회 > 핀테크 선불계정 거래내역조회', '/publish/smr/view/blb/SBPBLBS52LSTV10M.html', '2023-09-26', 'O', '하유희','v1.13','');
+					viewlist('전체(다른금융) > 보험 > 상세 > 보험조회 상세(다른금융)', '/publish/smr/view/blb/SBPBLBS53DETV00P.html', '2023-09-26', 'O', '하유희','v1.13','');
+
+					viewtitle('거래내역조회');
+					viewlist('예금 > 입출금 > 계좌정보관리-입출금', '/publish/smr/view/blb/SBPBLBS20MNGV10M.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('예금 > 적금 > 계좌정보관리-예금', '/publish/smr/view/blb/SBPBLBS20MNGV11M.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('예금 > 적금 > 계좌정보관리-적금', '/publish/smr/view/blb/SBPBLBS20MNGV11M_02.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('펀드 > 계좌관리 > 계좌정보관리-펀드', '/publish/smr/view/blb/SBPBLBS20MNGV12M.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('대출 > 계좌관리 > 계좌정보관리-대출일시일대', '/publish/smr/view/blb/SBPBLBS20MNGV13M.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('대출 > 계좌관리 > 계좌정보관리-대출할부/분할', '/publish/smr/view/blb/SBPBLBS20MNGV14M.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('대출 > 계좌관리 > 계좌정보관리-대출종합통장대출', '/publish/smr/view/blb/SBPBLBS20MNGV15M.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('신탁 > 계좌관리 > 계좌정보관리-신탁', '/publish/smr/view/blb/SBPBLBS20MNGV16M.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('외환 > 계좌관리 > 계좌관리-외환요구불', '/publish/smr/view/blb/SBPBLBS20MNGV17M.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('외환 > 계좌관리 > 계좌관리-외환예금', '/publish/smr/view/blb/SBPBLBS20MNGV18M.html', '2023-10-23', 'O', '하유희','v1.13','');
+					viewlist('퇴직연금 > 계좌관리 > 계좌정보관리-퇴직연금', '/publish/smr/view/blb/SBPBLBS20MNGV19M.html', '2023-10-24', 'O', '하유희','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역상세-입출금이체거래', '/publish/smr/view/blb/SBPBLBS30DETV10P.html', '2023-10-13', 'O', '하유희','v1.13','');
+					viewlist('대출 > 상세 > 거래내역상세-일시일대', '/publish/smr/view/blb/SBPBLBS30DETV11P.html', '2023-10-13', 'O', '하유희','v1.13','');
+					viewlist('펀드 > 상세 > 거래내역상세-펀드', '/publish/smr/view/blb/SBPBLBS30DETV12P.html', '2023-09-15', 'O', '하유희','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역상세-입출금기타거래', '/publish/smr/view/blb/SBPBLBS30DETV13P.html', '2023-10-12', 'O', '하유희','v1.13','');
+					viewlist('신탁 > 상세 > 거래내역상세-신탁', '/publish/smr/view/blb/SBPBLBS30DETV16P.html', '2023-09-15', 'O', '하유희','v1.13','');
+					viewlist('외환 > 상세 > 거래내역상세-외환요구불', '/publish/smr/view/blb/SBPBLBS30DETV17P.html', '2023-10-13', 'O', '하유희','v1.13','');
+					viewlist('외환 > 상세 > 거래내역상세-해외/국내송금', '/publish/smr/view/blb/SBPBLBS30DETV18P.html', '2023-10-13', 'O', '하유희','v1.13','');
+					viewlist('퇴직연금 > 상세 > 거래내역상세-퇴직연금', '/publish/smr/view/blb/SBPBLBS30DETV19P.html', '2023-09-15', 'O', '하유희','v1.13','');
+					viewlist('보험계약조회 > 거래상세 > 보험계약조회-거래상세', '/publish/smr/view/blb/SBPBLBS40DETV00M.html', '2023-10-19', 'O', '하유희','v1.13','');
+					viewlist('보험계약조회 > 거래상세 > 생명보험상세 > 생명보험상세', '/publish/smr/view/blb/SBPBLBS40MNGV10P.html', '2023-09-15', 'O', '하유희','v1.13','');
+					viewlist('보험계약조회 > 거래상세 > 생명보험상세 > 손해보험상세', '/publish/smr/view/blb/SBPBLBS40MNGV11P.html', '2023-09-15', 'O', '하유희','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록 - 스켈레톤', '/publish/smr/view/blb/SBPBLBS30LSTV00M_load.html', '2023-12-07', 'O', '송나영','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록-입출금', '/publish/smr/view/blb/SBPBLBS30LSTV00M.html', '2023-10-27', 'O', '하유희','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록-예적금', '/publish/smr/view/blb/SBPBLBS30LSTV00M_dpo.html', '2023-10-27', 'O', '하유희','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록-예적금(에그머니나)', '/publish/smr/view/blb/SBPBLBS30LSTV00M_dpo02.html', '2023-11-14', 'O', '서현호','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록-예적금(오늘도세이브)', '/publish/smr/view/blb/SBPBLBS30LSTV00M_dpo03.html', '2023-11-14', 'O', '서현호','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록-펀드', '/publish/smr/view/blb/SBPBLBS30LSTV00M_fun.html', '2023-10-13', 'O', '하유희','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록-대출', '/publish/smr/view/blb/SBPBLBS30LSTV00M_lon.html', '2023-10-13', 'O', '하유희','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록-신탁', '/publish/smr/view/blb/SBPBLBS30LSTV00M_trs.html', '2023-10-13', 'O', '하유희','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록-외환', '/publish/smr/view/blb/SBPBLBS30LSTV00M_exc.html', '2023-10-13', 'O', '하유희','v1.13','');
+					viewlist('예금 > 입출금 > 거래내역목록-퇴직연금', '/publish/smr/view/blb/SBPBLBS30LSTV00M_rtp.html', '2023-10-13', 'O', '하유희','v1.13','');
+					viewlist('펀드 > 계좌관리 > 펀드거래예정목록 > 계좌관리-펀드거래예정목록', '/publish/smr/view/blb/SBPBLBS30LSTV12P.html', '2023-10-16', 'O', '하유희','v1.13','');
+					viewlist('은행 > 목록 > 오픈뱅킹거래내역목록', '/publish/smr/view/blb/SBPBLBS50LSTV00M.html', '2023-10-12', 'O', '하유희','v1.13','');
+
+					viewtitle('ATM인증번호출금');
+					viewlist('ATM출금이용방법안내 ', '/publish/smr/view/blb/SBPBLBS60GUDV00P.html', '2023-10-10', 'O', '하유희','v1.03','');
+					viewlist('출금금액입력', '/publish/smr/view/blb/SBPBLBS60IPTV10M.html', '2023-09-15', 'O', '서현호','v1.03','');
+					viewlist('출금금액입력 (error)', '/publish/smr/view/blb/SBPBLBS60IPTV10M_02.html', '2023-09-15', 'O', '서현호','v1.03','');
+					viewlist('연락처입력', '/publish/smr/view/blb/SBPBLBS60IPTV20M.html', '2023-09-12', 'O', '하유희','v1.03','');
+					viewlist('출금요청확인', '/publish/smr/view/blb/SBPBLBS60APLV30M.html', '2023-09-15', 'O', '하유희','v1.03','');
+					viewlist('신청내역확인', '/publish/smr/view/blb/SBPBLBS60DETV00M.html', '2023-10-10', 'O', '하유희','v1.03','');
+
+					</script>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+			</div>
+
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+
+</body>
+</html>

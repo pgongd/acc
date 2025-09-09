@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>경남은행</title>
+
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/view.css">
+
+	<script src="/knsb/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/guide.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrap">
+		<h1 class="bodyTit">상품관리</h3>
+		<div class="progressRate">
+			<span><strong class="badge1">total</strong><em class="totalNum"></em></span>
+			<!-- <span><em>1차</em><strong class="badge1">total</strong><em class="totalNum"></em></span> -->
+			<span><strong class="badge2">완료</strong><em class="endNum"></em></span>
+			<span><strong class="badge3">진행중</strong><em class="ingNum"></em></span>
+			<span><strong class="badge4">진행률</strong><em class="endRate"></em></span>
+			<!-- <span><em>2차</em><strong class="badge1 hue_rota">total</strong><em class="totalNum02"></em></span>
+			<span><strong class="badge2 hue_rota">완료</strong><em class="endNum02"></em></span>
+			<span><strong class="badge3 hue_rota">진행중</strong><em class="ingNum02"></em></span>
+			<span><strong class="badge4 hue_rota">진행률</strong><em class="endRate02"></em></span> -->
+		</div>
+
+		<div class="list_tbl_box">
+			<button type="button" class="btnFoldAll">전체 접기/펼치기</button>
+			<table>
+				<caption></caption>
+				<colgroup>
+					<col width="5%"></col>
+					<col width="auto"></col>
+					<col width="auto"></col>
+					<col width="120px"></col>
+					<col width="40px"></col>
+					<col width="70px"></col>
+					<col width="70px"></col>
+					<col width="auto"></col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>title</th>
+						<th>URL</th>
+						<th>작업일</th>
+						<th>완료</th>
+						<th>담당자</th>
+						<th>기획 버전</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<script type="text/javascript">
+
+					// viewtitle('');
+					// viewtitle02('');
+
+					
+					viewtitle('예금');
+					viewlist('예금계좌조회 > 예금계좌조회목록', '/publish/smr/view/inq/SBPINQS91LSTV00M.html', '2023-09-22', 'O', '송나영', 'v1.15', '');
+					viewlist('예금계좌조회 > 예금계좌조회목록 > 예금해지담보대출안내', '/publish/smr/view/inq/SBPINQS91LSTV00M_02.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록', '/publish/smr/view/inq/SBPINQS80LSTV00M.html', '2023-10-27', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록 - 해지계좌선택(외환)', '/publish/smr/view/inq/SBPINQS80IPTV11M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록 - 조회조건설정', '/publish/smr/view/inq/SBPINQS80LSTV00M_02.html', '2023-10-13', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록 - 해지예상조회', '/publish/smr/view/inq/SBPINQS80LSTV00M_03.html', '2023-11-06', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록 (팝업)', '/publish/smr/view/inq/SBPINQS80LSTV00M_04.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록 > 해지정보입력', '/publish/smr/view/inq/SBPINQS80RSGV10M.html', '2023-10-30', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록 > 해지정보입력(외환)', '/publish/smr/view/inq/SBPINQS80RSGV20M.html', '2023-11-02', 'O', '송나영', 'v1.18', '');
+					viewlist('예금해지및조회 > 예금해지목록 > 해지정보확인', '/publish/smr/view/inq/SBPINQS80RSGV10M_02.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록 > 해지정보확인(마지막출금계좌해지)', '/publish/smr/view/inq/SBPINQS80RSGV10M_03.html', '2023-10-20', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록 > 해지정보확인(외환계좌중도해지)', '/publish/smr/view/inq/SBPINQS80RSGV10M_05.html', '2023-12-28', 'O', '서현호', '', '');
+					viewlist('예금해지및조회 > 예금해지목록 > 해지완료', '/publish/smr/view/inq/SBPINQS80FINV20M.html', '2023-10-20', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 예금해지목록 > 해지완료 - 받는분 정보확인', '/publish/smr/view/inq/SBPINQS80FINV20M_02.html', '2023-10-20', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 중도해지 유의사항', '/publish/smr/view/inq/SBPINQS80RSGV10M_04.html', '2023-12-12', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 해지계좌목록 > 해지계좌거래내역', '/publish/smr/view/inq/SBPINQS80LSTV11M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 해지계좌목록 > 조회조건설정', '/publish/smr/view/inq/SBPINQS80LSTV11M_02.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					viewlist('예금해지및조회 > 해지계좌목록 > 해지계좌상세', '/publish/smr/view/inq/SBPINQS80DETV20M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					
+					viewtitle('대출');
+					viewlist('대출계좌조회 > 대출계좌조회목록', '/publish/smr/view/inq/SBPINQS92LSTV00M.html', '2023-09-19', 'O', '송나영', 'v1.15', '');
+					viewtitle02('이자납입내역조회');
+					viewlist('이자납입내역조회목록', '/publish/smr/view/inq/SBPINQS93LSTV00M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					viewlist('이자납입내역조회목록 > 이자납입내역', '/publish/smr/view/inq/SBPINQS93LSTV10M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					
+					viewtitle('펀드');
+					viewlist('펀드계좌조회 > 펀드계좌조회목록', '/publish/smr/view/inq/SBPINQS94LSTV00M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					viewlist('펀드계좌조회 > 펀드계좌조회목록(조회목록 없음)', '/publish/smr/view/inq/SBPINQS94LSTV00M_02.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					
+					viewtitle('신탁');
+					viewlist('신탁계좌조회 > 신탁계좌조회목록', '/publish/smr/view/inq/SBPINQS95LSTV00M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					
+					viewtitle('외환');
+					viewlist('외화예금조회 > 외화예금조회목록', '/publish/smr/view/inq/SBPINQS96LSTV00M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					 
+					viewtitle('ISA');
+					viewtitle02('신탁형');
+					viewlist('계약조회 > 보유계좌 없는 경우 안내', '/publish/smr/view/inq/SBPINQS98LSTV00M_02.html', '2023-09-22', 'O', '송나영', 'v1.15', '');
+					// viewlist('계약조회 > 계약조회목록', '/publish/smr/view/inq/SBPINQS98LSTV00M.html', '2023-10-16', 'O', '송나영', 'v1.08', '');
+					viewlist('계약조회 > 계약조회상세', '/publish/smr/view/inq/SBPINQS98DETV10M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+					viewtitle02('일임형');
+					// viewlist('계약조회 > 계약조회목록', '/publish/smr/view/inq/SBPINQS98LSTV01M.html', '2023-10-16', 'O', '송나영', 'v1.08', '');
+					viewlist('계약조회 > 계약조회상세', '/publish/smr/view/inq/SBPINQS98DETV11M.html', '2023-10-16', 'O', '송나영', 'v1.15', '');
+
+					</script>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+
+	<div class="prevViewerWrap">
+		<div class="viewerMask" onclick="viewerClose('.prevViewerWrap');"></div>
+		<div class="prevViewerBox">
+			<div class="title">
+				미리보기
+			</div>
+
+			<div class="viewerBox">
+				<iframe src="" id="viewerFrame" name="viewerFrame" title="컨텐츠 프레임" frameborder="0" marginheight="0" marginwidth="0" ></iframe>
+			</div>
+
+			<button class="closeViewer" onclick="viewerClose('.prevViewerWrap');">닫기</button>
+		</div>
+	</div>
+
+</body>
+</html>
